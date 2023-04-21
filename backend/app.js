@@ -8,10 +8,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 //Route Imports
+import boardRouter from "./routes/boardRoute.js";
 import userRouter from "./routes/userRoute.js";
 
 //Route Entrypoint
 app.use("/api", userRouter);
+app.use("/api", boardRouter);
 
 //Error Middleware To Handle Error
 app.use(errorMiddleware);
