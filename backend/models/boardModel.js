@@ -40,16 +40,8 @@ const boardSchema = new mongoose.Schema({
                 type: Boolean,
                 default: false,
               },
-              createAt: {
-                type: Date,
-                default: new Date(Date.now),
-              },
             },
           ],
-          createdAt: {
-            type: Date,
-            default: new Date(Date.now),
-          },
         },
       ],
     },
