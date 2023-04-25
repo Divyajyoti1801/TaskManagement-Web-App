@@ -10,11 +10,13 @@ app.use(cookieParser());
 
 //Major Route Imports
 import BoardRouter from "./routes/BoardRoutes.js";
+import TaskRouter from "./routes/TaskRoutes.js";
 import UserRouter from "./routes/UserRoutes.js";
 
 //Major Route EndPoints
 app.use("/api", UserRouter);
 app.use("/api", BoardRouter);
+app.use("/api", TaskRouter);
 //Middleware
 app.use(errorMiddleware);
 

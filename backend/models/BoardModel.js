@@ -31,6 +31,14 @@ const boardSchema = new mongoose.Schema(
               type: String,
               required: true,
             },
+            column: {
+              type: mongoose.Schema.Types.ObjectId,
+              required: true,
+            },
+            board: {
+              type: mongoose.Schema.Types.ObjectId,
+              require: true,
+            },
             subtasks: [
               {
                 sName: {

@@ -50,3 +50,27 @@ export const getBoard = AsyncHandler(async (req, res, next) => {
   }
   res.status(200).json(board);
 });
+
+//Create Column
+export const createColumn = AsyncHandler(async (req, res, next) => {
+    const board = await Boards.findById(req.params.bid);
+    if (!board) {
+        return next(new ErrorHandler("Board Not Found", 404));
+    }
+    board.columns.push(req.body);
+    await board.save();
+    res.status(200).json(board);
+});
+
+//Show all Tasks 
+export const showTasks = AsyncHandler(async (req, res, next) => {
+  const board = await Boards.findById(req.params.bid);
+   if (!board) {
+     return next(new ErrorHandler("Board Not Found", 404));
+  }
+  const [column] = board.columns.filter(c => c._id.toString() === req.params.cid);
+  if (!column) {
+    return next(new ErrorHandler("Column Not Found", 404));
+  }
+  res.status(200).json(column.tasks);
+});
