@@ -9,11 +9,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 //Major Route Imports
+import BoardRouter from "./routes/BoardRoutes.js";
 import UserRouter from "./routes/UserRoutes.js";
 
 //Major Route EndPoints
 app.use("/api", UserRouter);
-
+app.use("/api", BoardRouter);
 //Middleware
 app.use(errorMiddleware);
 
