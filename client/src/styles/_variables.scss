@@ -25,12 +25,13 @@ $color-medium-Grey:#828FA3;
 $color-lines-Dark:#3E3F4E;
 $color-dark-Grey:#2B2C37;
 $color-background-Dark-Grey:#20212C;
-$color-main-Back:#000112;
+$color-main-Black:#000112;
 
 /*Default Variables*/
-$border-radius:10px;
+$border-radius:6px;
 $bp-mobile:25.875em;
 $bp-tablet:64em;
+$transition: all .3s ease;
 
 /*Mixin*/
 @mixin Flex($dir,$just,$align){
@@ -46,12 +47,17 @@ $bp-tablet:64em;
     }
 }
 
-@mixin BTN($bg,$color,$size){
+@mixin BTN($bg,$color,$size,$pt,$pb){
     color:$color;
     background:$bg;
     border-radius: 100px;
-    font-weight: $font-weight-md;
+    font-weight: $font-weight-l;
+    font-family: $font-family;
     font-size: $size;
+    border: none;
+    padding: $pt $pb;
+    transition: $transition;
+    cursor: pointer;
 }
 
 @mixin BTN-HOVER($bg,$color){

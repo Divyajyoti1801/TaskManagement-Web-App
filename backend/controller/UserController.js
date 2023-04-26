@@ -6,9 +6,14 @@ import AsyncHandler from "../utils/AsyncFunction.js";
 
 /* REGISTER USER */
 export const registerUser = AsyncHandler(async (req, res, next) => {
-  const { userName, email, password } = req.body;
+  const { userName, email, password, confirmPassword } = req.body;
   if (!userName || !email || !password) {
     return next(new ErrorHandler("All Fields Required", 203));
+  }
+  if (password !== confirmPassword) {
+    return next(
+      new ErrorHandler("Password and Confirm password doesn't match")
+    );
   }
   //Password Encryption
   const salt = await bcrypt.genSalt();
