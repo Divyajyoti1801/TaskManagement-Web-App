@@ -16,7 +16,9 @@ connectDB();
 
 //Server Instance
 const server = app.listen(process.env.PORT || 4000, () => {
-  console.log(`Server Connect Port: ${process.env.PORT}`);
+  console.log(
+    `Server Connect Port: ${process.env.PORT} in ${process.env.NODE_ENV} mode`
+  );
 });
 
 //Handling Uncaught Promise Rejection
