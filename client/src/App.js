@@ -4,6 +4,7 @@ import Banner from "./router/Banner/Banner.router";
 import Login from "./router/Login/Login.router";
 import Register from "./router/Register/Register.router";
 
+
 const App = () => {
   return (
     <Routes>
