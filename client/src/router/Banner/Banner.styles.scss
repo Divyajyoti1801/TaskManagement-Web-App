@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    @include Flex(column,space-between,center);
+
+    &__header{
+        width: 100%;
+        height: 50%;
+        background: $color-main-Purple;
+        @include Flex(column,center,center);
+        
+        &--logo{
+            font-weight: $font-weight-l;
+            font-size: 7.8rem;
+            color:$color-background-Grey;
+            margin-bottom: 4rem;
+        }
+    }
+    &__cta{
+        width: 100%;
+        height:50%;
+        background: $color-background-Grey;
+        @include Flex(row,space-around,center);
+    }
+}
