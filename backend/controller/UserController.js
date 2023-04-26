@@ -60,6 +60,8 @@ export const logoutUser = AsyncHandler(async (req, res, next) => {
   }
   res.cookie("token", null, {
     expire: new Date(Date.now()),
+    sameSite: process.env.NODE_ENV === "Development" ? "lax" : "none",
+    secure: process.env.NODE_ENV === "Development" ? false : true,
     httpOnly: true,
   });
   res.status(200).json({
