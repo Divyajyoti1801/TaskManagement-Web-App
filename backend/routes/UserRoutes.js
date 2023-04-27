@@ -12,7 +12,7 @@ const router = express.Router();
 //Major User End-Points
 router.route("/user/register").post(registerUser);
 router.post("/user/login", loginUser);
-router.get("/user/logout", logoutUser);
+router.get("/user/logout", isAuthenticated, logoutUser);
 
 
 
