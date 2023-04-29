@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "variables";
+
+html{
+    font-size: 62.5%;
+    @include BREAK($bp-tablet){
+        font-size: 58.5%;
+    }
+    @include BREAK($bp-mobile){
+        font-size: 52.5%;
+    }
+}
+
+*,*::after,*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+body{
+    box-sizing: inherit;
+    font-family: $font-family;
+    font-size: $font-size-text-M;
+    font-weight: $font-weight-S;
+}

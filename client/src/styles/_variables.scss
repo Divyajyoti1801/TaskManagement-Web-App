@@ -1,0 +1,73 @@
+/*  VARIABLES  */
+
+/* Typography  */
+$font-family: "Plus Jakarta Sans", sans-serif;
+$font-size-heading-XXL: 4.4rem;
+$font-size-heading-XL: 2.4rem;
+$font-size-heading-L: 1.8rem;
+$font-size-heading-M: 1.5rem;
+$font-size-heading-S: 1.2rem;
+$font-size-text-M: 1.3rem;
+$font-size-text-S: 1.2rem;
+$line-height-L: 2.3rem;
+$line-height-M: 1.5rem;
+$letter-spacing: 0.4rem;
+$font-weight-XXL: 800;
+$font-weight-XL: 700;
+$font-weight-L: 600;
+$font-weight-M: 500;
+$font-weight-S: 400;
+
+/* COLOR PLATTE */
+$color-main-RED: #ea5555;
+$color-hover-RED: #ff9898;
+$color-main-PURPLE: #635fc7;
+$color-hover-PURPLE: #a8a4ff;
+$color-main-BLACK: #000112;
+$color-back-dark-GREY: #20212c;
+$color-main-DARK-GREY: #2b2c37;
+$color-lines-DARK: #3e3f4e;
+$color-main-MEDIUM-GREY: #828fa3;
+$color-lines-LIGHT: #e4ebfa;
+$color-back-GREY: #f4f7fd;
+$color-main-WHITE: #ffffff;
+
+/* Default Variables */
+$transition: all 0.3s ease;
+$border-radius-BTN: 100px;
+$border-radius: 10px;
+$bp-mobile: 25.875em;
+$bp-tablet: 64em;
+
+/* Mixin Functions */
+
+@mixin BREAK($bp) {
+  @media only screen and (max-width: $bp) {
+    @content;
+  }
+}
+
+@mixin FLEX($dir, $just, $align) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $just;
+  align-items: $align;
+}
+
+@mixin BTN($bg, $color, $size, $pt, $ps) {
+  background: $bg;
+  color: $color;
+  font-size: $size;
+  font-weight: $font-weight-L;
+  font-family: $font-family;
+  padding: $pt $ps;
+  border: none;
+  border-radius: $border-radius-BTN;
+  cursor: pointer;
+  transition: $transition;
+}
+
+@mixin BTN-HOVER($bg, $color) {
+  background: $bg;
+  color: $color;
+}
