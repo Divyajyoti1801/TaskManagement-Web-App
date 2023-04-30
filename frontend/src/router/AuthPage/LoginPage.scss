@@ -1,0 +1,76 @@
+@import "../../styles/_variables.scss";
+
+.authlogin {
+  height: 100vh;
+  width: 100%;
+  @include FLEX(row, center, center);
+  background: $color-back-dark-GREY;
+
+  .login {
+    background: $color-back-GREY;
+    border-radius: $border-radius;
+    width: 40%;
+    padding: 3.4rem 3.2rem;
+    @include FLEX(column, center, center);
+    @include BREAK($bp-tablet) {
+      width: 60%;
+    }
+
+    &__header {
+      font-size: $font-size-heading-XXL;
+      color: $color-back-dark-GREY;
+      text-align: left;
+      width: 100%;
+      margin-bottom: 3rem;
+    }
+
+    &__container {
+      width: 100%;
+      @include FLEX(column, center, flex-start);
+
+      &:not(:last-child) {
+        margin-bottom: 3.2rem;
+      }
+
+      &--label {
+        width: 100%;
+        font-size: $font-size-heading-M;
+        font-weight: $font-weight-L;
+        color: $color-back-dark-GREY;
+        margin-bottom: 0.8rem;
+      }
+      &--input {
+        width: 80%;
+        padding: 1.2rem 2rem;
+        border-radius: $border-radius;
+        outline: none;
+        font-size: $font-size-text-M;
+        font-weight: $font-weight-L;
+        font-family: $font-family;
+        color: $color-main-BLACK;
+        border: 2px solid transparent;
+        &::placeholder {
+          color: $color-lines-LIGHT;
+        }
+        &:required {
+          border-color: $color-hover-PURPLE;
+        }
+      }
+    }
+
+    &__submit {
+      width: 60%;
+      @include BTN(
+        $color-main-PURPLE,
+        $color-main-WHITE,
+        $font-size-heading-M,
+        1.4rem,
+        2.8rem
+      );
+      &:active,
+      &:hover {
+        @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+      }
+    }
+  }
+}

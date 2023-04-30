@@ -1,0 +1,42 @@
+@import "../../styles/variables";
+
+.navigation {
+  background: $color-main-WHITE;
+  border-bottom: 2px solid $color-lines-LIGHT;
+  @include FLEX(row, space-between, center);
+
+  &__header {
+    padding: 2.8rem 2.3rem;
+    border-right: 2px solid $color-lines-LIGHT;
+  }
+
+  &__nav {
+    width: 100%;
+    height: 100%;
+    padding: 0 2.3rem;
+    @include FLEX(row, space-between, center);
+
+    &--title {
+    }
+
+    &--cta {
+      @include FLEX(row, space-between, center);
+      gap: 2rem;
+
+      &--btn {
+        @include BTN(
+          $color-main-PURPLE,
+          $color-main-WHITE,
+          $font-size-heading-M,
+          1.2rem,
+          2.4rem
+        );
+
+        &:active,
+        &:hover {
+          @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+        }
+      }
+    }
+  }
+}
