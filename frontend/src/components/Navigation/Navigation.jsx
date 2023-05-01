@@ -1,6 +1,7 @@
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import AddTask from "../../assets/icon-add-task-mobile.svg";
 import LOGO from "../../assets/logo-dark.svg";
 import { LogoutUser } from "../../store/User/user.actions";
 import {
@@ -31,6 +32,9 @@ const Navigation = () => {
         <h2 className="navigation__nav--title"> Platform Launch</h2>
         <div className="navigation__nav--cta">
           <h2 className="navigation__nav--cta--user">{user.name}</h2>
+          <button className="navigation__nav--cta--create">
+            <img src={AddTask} alt="Add Task Icon" /> Add New Task
+          </button>
           <button
             className="navigation__nav--cta--btn"
             onClick={onClickHandler}

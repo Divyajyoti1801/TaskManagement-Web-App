@@ -1,27 +1,55 @@
 @import "../../styles/variables";
 
 .navigation {
-  background: $color-main-WHITE;
-  border-bottom: 2px solid $color-lines-LIGHT;
+  background: $color-back-GREY;
+
   @include FLEX(row, space-between, center);
 
   &__header {
-    padding: 2.8rem 2.3rem;
+    padding: 2.8rem 0;
     border-right: 2px solid $color-lines-LIGHT;
+    border-bottom: 2px solid $color-lines-LIGHT;
+    width: 30rem;
+    @include FLEX(row, center, center);
   }
 
   &__nav {
     width: 100%;
     height: 100%;
-    padding: 0 2.3rem;
+    padding: 2rem 2.3rem;
+    border-bottom: 2px solid $color-lines-LIGHT;
     @include FLEX(row, space-between, center);
 
     &--title {
+      font-weight: $font-weight-XL;
     }
 
     &--cta {
       @include FLEX(row, space-between, center);
       gap: 2rem;
+
+      &--user {
+        font-weight: $font-weight-M;
+        font-size: $font-size-heading-M;
+      }
+
+      &--create {
+        img {
+          margin-right: 0.8rem;
+        }
+        @include BTN(
+          $color-main-PURPLE,
+          $color-main-WHITE,
+          $font-size-heading-M,
+          1.2rem,
+          2.4rem
+        );
+
+        &:active,
+        &:hover {
+          @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+        }
+      }
 
       &--btn {
         @include BTN(
