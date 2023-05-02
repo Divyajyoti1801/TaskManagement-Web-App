@@ -16,20 +16,11 @@ const App = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   return (
     <Fragment>
-      <Routes>
-        <Route index path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route
-          path="/dashboard"
-          element={isAuthenticated ? <DashBoard /> : <Navigate to="/" />}
-        />
-      </Routes>
       <Toaster
         position="top-center"
         toastOptions={{
           success: {
-            duration: 3000,
+            duration: 5000,
             iconTheme: {
               secondary: "#635fc7",
               primary: "#ffffff",
@@ -40,7 +31,7 @@ const App = () => {
             },
           },
           error: {
-            duration: 3000,
+            duration: 5000,
             iconTheme: {
               secondary: "#000112",
               primary: "#ea5555",
@@ -52,6 +43,15 @@ const App = () => {
           },
         }}
       />
+      <Routes>
+        <Route index path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/dashboard"
+          element={isAuthenticated ? <DashBoard /> : <Navigate to="/" />}
+        />
+      </Routes>
     </Fragment>
   );
 };

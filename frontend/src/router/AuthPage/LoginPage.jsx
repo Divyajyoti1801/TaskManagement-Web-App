@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginUser } from "../../store/User/user.actions";
 
-import {
-  selectIsAuthenticated,
-  selectUser,
-} from "../../store/User/user.selector";
+import { selectIsAuthenticated } from "../../store/User/user.selector";
 import "./LoginPage.scss";
 
 //Default Form Field
@@ -22,7 +18,6 @@ const LoginPage = () => {
   const { email, password } = formInput;
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
-  const user = useSelector(selectUser);
 
   //Input Value Change Handler
   const onChangeHandler = (e) => {
@@ -36,12 +31,8 @@ const LoginPage = () => {
   //Submit Form Handler
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-
     dispatch(LoginUser(email, password));
-    if (isAuthenticated) {
-      toast.success(`Welcome ${user.name}! Happy Productivity.`);
-      clearFormInput();
-    }
+    clearFormInput();
   };
 
   useEffect(() => {

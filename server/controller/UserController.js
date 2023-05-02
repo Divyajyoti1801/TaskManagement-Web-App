@@ -2,25 +2,33 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Users from "../models/UserModel.js";
 import AsyncHandler from "../utils/AsyncHandler.js";
+import ErrorHandler from "../utils/ErrorHandler.js";
 
 /* REGISTER USER CONTROLLER */
 export const registerUser = AsyncHandler(async (req, res, next) => {
   const { name, email, password, confirmPassword } = req.body;
   if (!name) {
-    return res.json({ error: "Name Required" });
+    return next(new ErrorHandler("Name Required", 204));
   }
   if (!password || password.length < 8) {
-    return res.json({ error: "Password Required, More Than 8 Characters" });
+    return next(
+      new ErrorHandler(
+        "Password Required! Password Length More Than 8 Characters",
+        204
+      )
+    );
   }
   if (password !== confirmPassword) {
-    return res.json({ error: "Password & Confirm Password Not Matching" });
+    return next(
+      new ErrorHandler("Password & Confirm Password Not Matching", 204)
+    );
   }
   if (!email) {
     return res.json({ error: "Email Required" });
   }
   const isUserPresent = await Users.findOne({ email: email });
   if (isUserPresent) {
-    return res.json({ error: "User Already Exists" });
+    return next(new ErrorHandler("User Already Exists", 404));
   }
 
   //Password Encryption

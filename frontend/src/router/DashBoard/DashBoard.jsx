@@ -1,10 +1,15 @@
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Board from "../../components/Board/Board";
 import BoardSelector from "../../components/BoardSelector/BoardSelector";
 import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
 import { AllBoards } from "../../store/Boards/board.actions";
-import { selectBoards } from "../../store/Boards/board.selector";
+import {
+  selectBoard,
+  selectBoards,
+  selectIsBoardLoading,
+} from "../../store/Boards/board.selector";
 import { selectIsLoading } from "../../store/User/user.selector.js";
 import "./DashBoard.scss";
 
@@ -13,8 +18,10 @@ const DashBoard = () => {
   useEffect(() => {
     dispatch(AllBoards);
   }, [dispatch]);
-  const { isLoading } = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectIsLoading);
+  const isBoardLoading = useSelector(selectIsBoardLoading);
   const Boards = useSelector(selectBoards);
+  const board = useSelector(selectBoard);
 
   return (
     <Fragment>
@@ -41,6 +48,7 @@ const DashBoard = () => {
                 + Create New Board
               </button>
             </div>
+            {isBoardLoading ? <Loader /> : <Board board={board} />}
           </div>
         </div>
       )}

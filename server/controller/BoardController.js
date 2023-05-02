@@ -1,6 +1,7 @@
 import Boards from "../models/BoardModel.js";
 import Users from "../models/UserModel.js";
 import AsyncHandler from "../utils/AsyncHandler.js";
+import ErrorHandler from "../utils/ErrorHandler.js";
 
 /* SHOW ALL BOARD CONTROLLER */
 export const showBoards = AsyncHandler(async (req, res, next) => {
@@ -43,4 +44,18 @@ export const deleteBoard = AsyncHandler(async (req, res, next) => {
   }
   await Boards.findByIdAndDelete(id);
   res.json({ message: "Board Removed Successfully" });
+});
+
+/* GETTING SPECIFIC BOARD */
+export const getBoard = AsyncHandler(async (req, res, next) => {
+  const user = await Users.findById(req.user);
+  const { id } = req.params;
+  if (!user) {
+    return next(new ErrorHandler("User Not Found", 404));
+  }
+  const board = await Boards.findOne({ _id: id, user: user });
+  if (!board) {
+    return next(new ErrorHandler("Board Doesn't Exists", 404));
+  }
+  res.status(200).json(board);
 });

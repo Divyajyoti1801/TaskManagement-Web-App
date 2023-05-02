@@ -11,3 +11,13 @@ export const selectBoards = createSelector(
   [selectBoardReducer],
   (data) => data.Boards
 );
+
+export const selectBoard = createSelector(
+  [selectBoardReducer],
+  (data) => data.board
+);
+
+export const selectIsBoardLoading = createSelector(
+  [selectBoardReducer],
+  (data) => data.isBoardLoading
+);
