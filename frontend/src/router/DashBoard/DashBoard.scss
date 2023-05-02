@@ -2,15 +2,50 @@
 
 .dashboard {
   width: 100vw;
-  height: auto;
+  height: 100vh;
   background: $color-back-GREY;
+  position: relative;
+  overflow: hidden;
 
   &__main {
+    height: 100%;
     &--sidebar {
       background: $color-main-WHITE;
-      width: 30rem;
       height: 100%;
+      width: 30rem;
       border-right: 2px solid $color-lines-LIGHT;
+
+      &--header {
+        color: $color-main-MEDIUM-GREY;
+        font-weight: $font-weight-XL;
+        letter-spacing: $letter-spacing;
+        padding: 1.6rem 3.2rem;
+      }
+
+      &--cta {
+        background: transparent;
+        border: none;
+        padding: 1.6rem 3.2rem;
+        font-size: $font-size-heading-M;
+        color: $color-main-PURPLE;
+        font-family: $font-family;
+        font-weight: $font-weight-XL;
+        @include FLEX(row, center, center);
+        cursor: pointer;
+        transition: $transition;
+        svg {
+          margin-right: 1rem;
+        }
+        &:hover {
+          color: $color-hover-PURPLE;
+          svg {
+            transition: $transition;
+            path {
+              fill: $color-hover-PURPLE;
+            }
+          }
+        }
+      }
     }
   }
 }

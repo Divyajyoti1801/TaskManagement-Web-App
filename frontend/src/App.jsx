@@ -10,7 +10,7 @@ import HomePage from "./router/HomePage/HomePage";
 import { selectIsAuthenticated } from "./store/User/user.selector";
 
 axios.defaults.baseURL = "http://localhost:3001/api";
-axios.defaults.withCredentials = false;
+axios.defaults.withCredentials = true;
 
 const App = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);

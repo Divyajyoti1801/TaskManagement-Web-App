@@ -1,0 +1,29 @@
+@import "../../styles/variables";
+
+.boardSelector {
+  @include FLEX(row, flex-start, center);
+  padding: 1.6rem 3.2rem;
+  color: $color-main-MEDIUM-GREY;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  margin-right: 2rem;
+
+  svg {
+    margin-right: 1rem;
+    path {
+      fill: $color-main-MEDIUM-GREY;
+    }
+  }
+  transition: $transition;
+
+  &:hover,
+  &:active {
+    background: $color-main-PURPLE;
+    color: $color-main-WHITE;
+    svg {
+      path {
+        fill: $color-main-WHITE;
+      }
+    }
+  }
+}

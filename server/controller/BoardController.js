@@ -24,7 +24,7 @@ export const createBoard = AsyncHandler(async (req, res, next) => {
   if (!user) {
     return res.status(404).json({ error: "User Not Found" });
   }
-  const checkBoard = await Boards.find({ name: name });
+  const checkBoard = await Boards.findOne({ name: name });
   if (checkBoard) {
     return res.json({ error: "Board Already Exists" });
   }
