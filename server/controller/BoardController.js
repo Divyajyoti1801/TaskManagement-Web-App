@@ -29,7 +29,7 @@ export const createBoard = AsyncHandler(async (req, res, next) => {
   if (checkBoard) {
     return res.json({ error: "Board Already Exists" });
   }
-  const board = await Boards.create({ name, user: user._id, Columns: columns });
+  const board = await Boards.create({ name, user: user._id, columns: columns });
   res
     .status(201)
     .json({ message: `Board (${board.name}) Created Successfully` });

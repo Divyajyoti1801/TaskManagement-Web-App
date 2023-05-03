@@ -11,13 +11,13 @@ const boardSchema = new mongoose.Schema(
       ref: "Users",
       required: true,
     },
-    Columns: [
+    columns: [
       {
-        title: {
+        name: {
           type: String,
           required: true,
         },
-        Tasks: [
+        tasks: [
           {
             title: {
               type: String,
@@ -31,7 +31,7 @@ const boardSchema = new mongoose.Schema(
               type: String,
               required: true,
             },
-            Subtasks: [
+            subtasks: [
               {
                 title: {
                   type: String,

@@ -3,6 +3,7 @@
 
 html {
   font-size: 62.5%;
+
   @include BREAK($bp-tablet) {
     font-size: 58.5%;
   }

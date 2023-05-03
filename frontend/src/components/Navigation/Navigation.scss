@@ -1,16 +1,17 @@
 @import "../../styles/variables";
 
 .navigation {
-  background: $color-back-GREY;
+  background: $color-main-WHITE;
   display: grid;
+  height: 9.6rem;
   grid-template-columns: 30rem 1fr;
-  height: 9.7rem;
+  width: 100%;
+  height: 100%;
 
   &__header {
     border-right: 2px solid $color-lines-LIGHT;
     border-bottom: 2px solid $color-lines-LIGHT;
     width: 30rem;
-    height: 100%;
     @include FLEX(row, flex-start, center);
     img {
       padding-left: 3.2rem;
@@ -18,8 +19,6 @@
   }
 
   &__nav {
-    height: 100%;
-    width: 1fr;
     padding: 0 2.2rem;
     border-bottom: 2px solid $color-lines-LIGHT;
     @include FLEX(row, space-between, center);
