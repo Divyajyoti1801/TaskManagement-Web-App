@@ -1,0 +1,63 @@
+@import "../../styles/variables";
+
+.welcome {
+  background: $color-back-GREY;
+  height: 100vh;
+  @include FLEX(column, space-between, center);
+
+  &__header {
+    height: 50%;
+    width: 100%;
+    background: $color-back-dark-GREY;
+    @include FLEX(column, center, center);
+
+    &--text {
+      width: 100%;
+      text-align: center;
+      font-size: $font-size-heading-XXL;
+      color: $color-back-GREY;
+      margin-bottom: 4rem;
+    }
+  }
+  &__cta {
+    height: 50%;
+    width: 100%;
+    @include FLEX(row, center, center);
+    gap: 4rem;
+
+    @include BREAK($bp-tablet) {
+      flex-direction: column;
+    }
+    &--Login {
+      width: 20rem;
+      @include FLEX(row, center, center);
+      @include BTN(
+        $color-main-PURPLE,
+        $color-main-WHITE,
+        $font-size-heading-XL,
+        1.8rem,
+        3.2rem
+      );
+      &:hover,
+      &:active {
+        @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+      }
+    }
+
+    &--Register {
+      width: 20rem;
+      @include FLEX(row, center, center);
+      @include BTN(
+        $color-main-PURPLE,
+        $color-main-WHITE,
+        $font-size-heading-XL,
+        1.8rem,
+        3.2rem
+      );
+      &:hover,
+      &:active {
+        @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+      }
+    }
+  }
+}

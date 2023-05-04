@@ -16,3 +16,13 @@ export const selectUser = createSelector(
   [SelectUserReducer],
   (userData) => userData.user
 );
+
+export const selectIsRegistered = createSelector(
+  [SelectUserReducer],
+  (userData) => userData.isRegistered
+);
+
+export const selectRegisterMessage = createSelector(
+  [SelectUserReducer],
+  (userData) => userData.registerMessage
+);

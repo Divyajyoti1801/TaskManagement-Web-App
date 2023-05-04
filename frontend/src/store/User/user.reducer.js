@@ -5,6 +5,8 @@ const INITIAL_STATE = {
   user: {},
   isLoading: false,
   isAuthenticated: false,
+  isRegistered: false,
+  registerMessage: "",
   error: null,
 };
 
@@ -28,6 +30,17 @@ const userReducer = (state = INITIAL_STATE, action) => {
         error: payload,
       };
     }
+    case USER_ACTION_TYPES.USER_REGISTER_START:
+      return { ...state };
+    case USER_ACTION_TYPES.USER_REGISTER_SUCCESS:
+      return { ...state, isRegistered: true, registerMessage: payload };
+    case USER_ACTION_TYPES.USER_REGISTER_FAILED:
+      return {
+        ...state,
+        isRegistered: false,
+        registerMessage: null,
+        error: payload,
+      };
     case USER_ACTION_TYPES.USER_LOGOUT_START:
       return { ...state, isLoading: true };
     case USER_ACTION_TYPES.USER_LOGOUT_SUCCESS:

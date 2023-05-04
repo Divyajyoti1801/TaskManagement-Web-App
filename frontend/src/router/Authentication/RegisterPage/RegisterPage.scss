@@ -1,0 +1,74 @@
+@import "../../../styles/variables";
+
+.registerPage {
+  width: 100%;
+  height: 100vh;
+  background: $color-back-dark-GREY;
+  padding: 3.2rem;
+  @include FLEX(row, center, center);
+
+  .register {
+    width: 40%;
+    padding: 3.2rem;
+    background: $color-back-GREY;
+    @include FLEX(column, center, center);
+    border-radius: $border-radius;
+    @include BREAK($bp-tablet) {
+      width: 100%;
+    }
+
+    &__header {
+      width: 100%;
+      margin-bottom: 3.2rem;
+      font-size: $font-size-heading-XXL;
+      color: $color-back-dark-GREY;
+    }
+
+    &__container {
+      width: 100%;
+      margin-bottom: 2.8rem;
+      @include FLEX(column, space-between, flex-start);
+      gap: 2rem;
+      &--label {
+        font-size: $font-size-heading-M;
+        font-weight: $font-weight-M;
+        color: $color-back-dark-GREY;
+      }
+      &--input {
+        padding: 1.6rem 0 1.6rem 2.4rem;
+        width: 100%;
+        font-family: $font-family;
+        font-size: $font-size-text-M;
+        font-weight: $font-weight-M;
+        color: $color-back-dark-GREY;
+        border-radius: $border-radius;
+        border: 2px solid transparent;
+        outline: none;
+
+        &::placeholder {
+          color: $color-lines-LIGHT;
+        }
+
+        &:required {
+          border-color: $color-main-PURPLE;
+        }
+      }
+    }
+
+    &__btn {
+      width: 50%;
+      @include BTN(
+        $color-main-PURPLE,
+        $color-main-WHITE,
+        $font-size-heading-M,
+        1.6rem,
+        3.2rem
+      );
+
+      &:hover,
+      &:active {
+        @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+      }
+    }
+  }
+}

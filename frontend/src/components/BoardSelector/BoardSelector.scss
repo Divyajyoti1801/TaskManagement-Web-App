@@ -1,24 +1,22 @@
 @import "../../styles/variables";
 
-.boardSelector {
-  @include FLEX(row, flex-start, center);
-  padding: 1.6rem 3.2rem;
+.boardselector {
+  width: 100%;
+  padding: 1.6rem 0;
+  padding-left: 3.2rem;
   color: $color-main-MEDIUM-GREY;
+  background: transparent;
+  font-size: $font-size-heading-M;
+  font-weight: $font-weight-S;
+  @include FLEX(row, flex-start, center);
+  gap: 1rem;
+  transition: $transition;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   cursor: pointer;
-  margin-right: 2rem;
-
-  svg {
-    margin-right: 1rem;
-    path {
-      fill: $color-main-MEDIUM-GREY;
-    }
-  }
-  transition: $transition;
-
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
     background: $color-main-PURPLE;
     color: $color-main-WHITE;
     svg {

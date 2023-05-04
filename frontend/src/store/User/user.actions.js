@@ -24,3 +24,21 @@ export const LogoutUser = async (dispatch) => {
     dispatch(createReducer(USER_ACTION_TYPES.USER_LOGOUT_FAILED, err));
   }
 };
+
+export const registerUser =
+  (name, email, password, confirmPassword) => async (dispatch) => {
+    try {
+      dispatch(createReducer(USER_ACTION_TYPES.USER_REGISTER_START));
+      const data = await axios.post("/user/register", {
+        name,
+        email,
+        password,
+        confirmPassword,
+      });
+      dispatch(
+        createReducer(USER_ACTION_TYPES.USER_REGISTER_SUCCESS, data.message)
+      );
+    } catch (error) {
+      dispatch(createReducer(USER_ACTION_TYPES.USER_REGISTER_FAILED, error));
+    }
+  };

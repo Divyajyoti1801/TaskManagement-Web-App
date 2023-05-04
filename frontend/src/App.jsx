@@ -1,16 +1,12 @@
-import axios from "axios";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
-import LoginPage from "./router/AuthPage/LoginPage";
-import RegisterPage from "./router/AuthPage/RegisterPage";
+import LoginPage from "./router/Authentication/LoginPage/LoginPage";
+import RegisterPage from "./router/Authentication/RegisterPage/RegisterPage";
 import DashBoard from "./router/DashBoard/DashBoard";
-import HomePage from "./router/HomePage/HomePage";
+import Welcome from "./router/Welcome/Welcome";
 import { selectIsAuthenticated } from "./store/User/user.selector";
-
-axios.defaults.baseURL = "http://localhost:3001/api";
-axios.defaults.withCredentials = true;
 
 const App = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -44,7 +40,7 @@ const App = () => {
         }}
       />
       <Routes>
-        <Route index path="/" element={<HomePage />} />
+        <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route

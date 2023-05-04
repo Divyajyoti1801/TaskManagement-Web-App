@@ -1,48 +1,37 @@
-import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import AddTask from "../../assets/icon-add-task-mobile.svg";
-import LOGO from "../../assets/logo-dark.svg";
+import Add from "../../assets/icon-add-task-mobile.svg";
+import Logo from "../../assets/logo-dark.svg";
 import { LogoutUser } from "../../store/User/user.actions";
-import {
-  selectIsAuthenticated,
-  selectUser,
-} from "../../store/User/user.selector";
+import { selectUser } from "../../store/User/user.selector";
 import "./Navigation.scss";
 
 const Navigation = () => {
   const user = useSelector(selectUser);
-  const navigate = useNavigate();
-  const isAuthenticated = useSelector(selectIsAuthenticated);
   const dispatch = useDispatch();
 
-  const onClickHandler = () => {
-    dispatch(LogoutUser);
-    if (!isAuthenticated) {
-      toast.success("User Logout Successful");
-      navigate("/");
-    }
-  };
+  //Logout Handler
+  const logoutHandler = () => dispatch(LogoutUser);
+
   return (
     <div className="navigation">
       <div className="navigation__header">
-        <img src={LOGO} alt="Kanban Logo" className="navigation__header--img" />
+        <img src={Logo} alt="Logo" className="navigation__header--logo" />
       </div>
-      <div className="navigation__nav">
-        <h2 className="navigation__nav--title"> Platform Launch</h2>
-        <div className="navigation__nav--cta">
-          <h2 className="navigation__nav--cta--user">{user.name}</h2>
-          <button className="navigation__nav--cta--create">
-            <img src={AddTask} alt="Add Task Icon" /> Add New Task
+      <nav className="navigation__nav">
+        <h2 className="navigation__nav-- title">Platform Launch</h2>
+        <div className="navigation__nav--menu">
+          <p className="navigation__nav--menu--user">{user.name}</p>
+          <button className="navigation__nav--menu--cta">
+            <img src={Add} alt="Add SVG" /> &nbsp; Add New Task
           </button>
           <button
-            className="navigation__nav--cta--btn"
-            onClick={onClickHandler}
+            className="navigation__nav--menu--cta"
+            onClick={logoutHandler}
           >
             Logout
           </button>
         </div>
-      </div>
+      </nav>
     </div>
   );
 };

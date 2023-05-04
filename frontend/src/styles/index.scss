@@ -8,7 +8,7 @@ html {
     font-size: 58.5%;
   }
   @include BREAK($bp-mobile) {
-    font-size: 52.5%;
+    font-size: 50%;
   }
 }
 
@@ -21,9 +21,9 @@ html {
 }
 
 body {
-  box-sizing: inherit;
+  box-sizing: border-box;
   font-family: $font-family;
-  font-size: $font-size-text-M;
+  font-size: $font-size-text-S;
   font-weight: $font-weight-S;
 }
 
