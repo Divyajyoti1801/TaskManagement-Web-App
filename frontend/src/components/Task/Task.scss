@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+.task {
+  width: 100%;
+  padding: 1.6rem 2.4rem;
+  background-color: $color-main-WHITE;
+  border-radius: $border-radius;
+  @include FLEX(column, center, flex-start);
+  gap: 1rem;
+
+  &__title {
+    font-size: $font-size-heading-M;
+    color: $color-main-BLACK;
+  }
+
+  &__subtitle {
+    font-size: $font-size-heading-S;
+    font-weight: $font-weight-L;
+    color: $color-main-MEDIUM-GREY;
+  }
+}

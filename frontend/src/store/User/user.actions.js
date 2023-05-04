@@ -1,6 +1,7 @@
 /* USER ACTIONS  */
 import axios from "axios";
 import createReducer from "../../utils/reducer/CreateReducer";
+import { clearBoards } from "../Boards/board.actions";
 import USER_ACTION_TYPES from "./user.types";
 
 export const LoginUser = (email, password) => async (dispatch) => {
@@ -19,6 +20,7 @@ export const LogoutUser = async (dispatch) => {
     const { data } = await axios.get("/user/logout");
     if (data.message) {
       dispatch(createReducer(USER_ACTION_TYPES.USER_LOGOUT_SUCCESS));
+      dispatch(clearBoards);
     }
   } catch (err) {
     dispatch(createReducer(USER_ACTION_TYPES.USER_LOGOUT_FAILED, err));

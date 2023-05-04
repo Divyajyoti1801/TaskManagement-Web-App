@@ -2,7 +2,18 @@
 
 .dashboard {
   height: 100vh;
-  background: $color-back-GREY;
   display: grid;
   grid-template-rows: 9.6rem 1fr;
+
+  .dashboardMain {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30rem 1fr;
+    overflow-y: scroll;
+
+    &__canvas {
+      width: 100%;
+      @include FLEX(row, center, center);
+    }
+  }
 }

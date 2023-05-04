@@ -26,6 +26,9 @@
       margin-top: 3.2rem;
       width: 100%;
       padding-left: 3.2rem;
+      background: transparent;
+      border: none;
+      outline: none;
       @include FLEX(row, flex-start, center);
       gap: 1rem;
       color: $color-main-PURPLE;

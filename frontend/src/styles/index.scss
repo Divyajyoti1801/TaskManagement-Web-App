@@ -3,6 +3,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 
   @include BREAK($bp-tablet) {
     font-size: 58.5%;
@@ -29,4 +30,41 @@ body {
 
 a {
   text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-main-WHITE;
+  margin-bottom: 2rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-hover-PURPLE;
+  border-radius: $border-radius;
+  transition: $transition;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $color-main-PURPLE;
+}
+.horizontal-scroll::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-main-WHITE;
+  margin-bottom: 2rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-hover-PURPLE;
+  border-radius: $border-radius;
+  transition: $transition;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $color-main-PURPLE;
 }

@@ -31,3 +31,7 @@ export const DeleteBoard = (id) => async (dispatch) => {
     dispatch(BOARD_ACTION_TYPES.DELETE_BOARD_FAILED, error);
   }
 };
+
+export const clearBoards = (dispatch) => {
+  dispatch(createReducer(BOARD_ACTION_TYPES.CLEAR_BOARDS, null));
+};
