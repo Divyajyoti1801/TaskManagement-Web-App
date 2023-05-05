@@ -1,6 +1,7 @@
 @import "../../styles/variables";
 
 .board {
+  height: 100%;
   width: 100%;
   background: $color-back-GREY;
   @include FLEX(row, flex-start, center);
@@ -14,6 +15,20 @@
       font-size: $font-size-heading-XL;
       font-weight: $font-weight-XL;
       color: $color-main-MEDIUM-GREY;
+    }
+    &--cta {
+      @include BTN(
+        $color-main-PURPLE,
+        $color-main-WHITE,
+        $font-size-heading-L,
+        1.8rem,
+        3.2rem
+      );
+      &:hover,
+      &:active,
+      &:focus {
+        @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+      }
     }
   }
 

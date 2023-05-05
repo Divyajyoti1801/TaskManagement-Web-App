@@ -59,3 +59,16 @@ export const getBoard = AsyncHandler(async (req, res, next) => {
   }
   res.status(200).json(board);
 });
+
+/* CREATE NEW COLUMN */
+export const createColumn = AsyncHandler(async (req, res, next) => {
+  const { bid } = req.params;
+  const { name } = req.body;
+  const board = await Boards.findById(bid);
+  if (!board) {
+    return next(new ErrorHandler("Board Not Found", 400));
+  }
+  board.columns.push({ name: name });
+  await board.save();
+  res.status(201).json({ message: "Column Created Successfully" });
+});

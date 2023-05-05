@@ -12,20 +12,71 @@
     padding-left: 3.2rem;
     border-bottom: 2px solid $color-lines-LIGHT;
     border-right: 2px solid $color-lines-LIGHT;
+    &--mobile {
+      display: none;
+    }
+
+    @include BREAK($bp-tablet) {
+      border-right: none;
+      &--logo {
+        display: none;
+      }
+      &--mobile {
+        @include FLEX(row, center, center);
+        gap: 1rem;
+        h3 {
+          font-size: $font-size-heading-XL;
+          font-weight: $font-weight-L;
+        }
+        img {
+          width: 2rem;
+          height: 100%;
+          cursor: pointer;
+        }
+      }
+    }
   }
 
   &__nav {
     @include FLEX(row, space-between, center);
     padding: 0 2.4rem;
     border-bottom: 2px solid $color-lines-LIGHT;
+    width: 100%;
+    &--title {
+      @include BREAK($bp-tablet) {
+        display: none;
+      }
+    }
     &--menu {
       @include FLEX(row, space-between, center);
       gap: 2rem;
+      @include BREAK($bp-tablet) {
+        justify-content: flex-end;
+        width: 100%;
+      }
       &--user {
         font-size: $font-size-heading-M;
         font-weight: $font-weight-M;
       }
-      &--cta {
+      &--cta-1 {
+        @include FLEX(row, center, center);
+        @include BTN(
+          $color-main-PURPLE,
+          $color-main-WHITE,
+          $font-size-heading-S,
+          1.6rem,
+          3.2rem
+        );
+        &:active,
+        &:hover,
+        &:focus {
+          @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+        }
+        @include BREAK($bp-tablet) {
+          display: none;
+        }
+      }
+      &--cta-2 {
         @include FLEX(row, center, center);
         @include BTN(
           $color-main-PURPLE,
@@ -40,6 +91,28 @@
           @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
         }
       }
+      &--mobile-cta {
+        display: none;
+        @include BREAK($bp-tablet) {
+          @include FLEX(row, center, center);
+          @include BTN(
+            $color-main-PURPLE,
+            $color-main-WHITE,
+            $font-size-heading-S,
+            1.6rem,
+            3.2rem
+          );
+          &:active,
+          &:hover,
+          &:focus {
+            @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+          }
+        }
+      }
     }
   }
+}
+
+.hidden {
+  display: none;
 }

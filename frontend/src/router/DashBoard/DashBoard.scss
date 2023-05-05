@@ -4,16 +4,61 @@
   height: 100vh;
   display: grid;
   grid-template-rows: 9.6rem 1fr;
+  position: relative;
 
   .dashboardMain {
     width: 100%;
+    height: calc(100vh - 9.6rem);
     display: grid;
+    background: $color-back-GREY;
     grid-template-columns: 30rem 1fr;
-    overflow-y: scroll;
+    @include BREAK($bp-tablet) {
+      grid-template-columns: 1fr;
+      height: 100%;
+      position: relative;
+    }
 
     &__canvas {
       width: 100%;
+      height: 100%;
+      background: $color-back-GREY;
+      overflow: scroll;
       @include FLEX(row, center, center);
+
+      &--empty {
+        width: 100%;
+        height: 100%;
+        background: $color-back-GREY;
+        @include FLEX(column, center, center);
+        gap: 2rem;
+        &--text {
+          font-size: $font-size-heading-L;
+          font-weight: $font-weight-M;
+          color: $color-main-MEDIUM-GREY;
+        }
+        &--cta {
+          @include FLEX(row, center, center);
+          gap: 1rem;
+          svg {
+            path {
+              fill: $color-main-WHITE;
+            }
+          }
+          @include BTN(
+            $color-main-PURPLE,
+            $color-main-WHITE,
+            $font-size-heading-M,
+            1.8rem,
+            3.2rem
+          );
+
+          &:hover,
+          &:active,
+          &:focus {
+            @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+          }
+        }
+      }
     }
   }
 }

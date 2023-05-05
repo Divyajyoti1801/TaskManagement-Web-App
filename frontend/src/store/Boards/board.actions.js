@@ -24,14 +24,14 @@ export const OneBoard = (id) => async (dispatch) => {
 
 export const DeleteBoard = (id) => async (dispatch) => {
   try {
-    dispatch(BOARD_ACTION_TYPES.DELETE_BOARD_START);
-    await axios.delete(`/board/delete/:${id}`);
-    dispatch(BOARD_ACTION_TYPES.DELETE_BOARD_SUCCESS);
+    dispatch(createReducer(BOARD_ACTION_TYPES.DELETE_BOARD_START));
+    await axios.delete(`/board/delete/${id}`);
+    dispatch(createReducer(BOARD_ACTION_TYPES.DELETE_BOARD_SUCCESS));
   } catch (error) {
-    dispatch(BOARD_ACTION_TYPES.DELETE_BOARD_FAILED, error);
+    dispatch(createReducer(BOARD_ACTION_TYPES.DELETE_BOARD_FAILED, error));
   }
 };
 
-export const clearBoards = (dispatch) => {
-  dispatch(createReducer(BOARD_ACTION_TYPES.CLEAR_BOARDS, null));
+export const ClearBoard = (dispatch) => {
+  dispatch(createReducer(BOARD_ACTION_TYPES.CLEAR_CURRENT_BOARD, null));
 };

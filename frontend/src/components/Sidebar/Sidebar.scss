@@ -6,6 +6,22 @@
   background: $color-main-WHITE;
   border-right: 2px solid $color-lines-LIGHT;
   @include FLEX(column, space-between, center);
+  transition: $transition;
+
+  @include BREAK($bp-tablet) {
+    width: 50rem;
+    height: 50rem;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+
+    &__hidden {
+      display: none;
+    }
+  }
 
   &__nav {
     width: 100%;
