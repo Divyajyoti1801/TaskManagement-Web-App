@@ -15,3 +15,9 @@ export const ColumnFormToggle = (boolean) =>
 
 export const DeleteBoardFormToggle = (boolean) =>
   createReducer(UI_ACTION_TYPES.UI_DELETE_BOARD_FORM_TOGGLE, boolean);
+
+export const SubtaskFormToggle = (boolean) =>
+  createReducer(UI_ACTION_TYPES.UI_SUBTASK_FORM_TOGGLE, boolean);
+
+export const AddtaskFormToggle = (boolean) =>
+  createReducer(UI_ACTION_TYPES.UI_ADDTASK_FORM_TOGGLE, boolean);

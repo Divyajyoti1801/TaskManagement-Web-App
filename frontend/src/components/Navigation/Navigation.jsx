@@ -5,8 +5,11 @@ import UpArrow from "../../assets/icon-chevron-up.svg";
 import Logo from "../../assets/logo-dark.svg";
 import MobileLogo from "../../assets/logo-mobile.svg";
 import { selectBoard } from "../../store/Boards/board.selector";
-import { toggleSidebar } from "../../store/UI/ui.actions";
-import { selectSidebarToggle } from "../../store/UI/ui.selector";
+import { AddtaskFormToggle, toggleSidebar } from "../../store/UI/ui.actions";
+import {
+  selectAddtaskFormToggle,
+  selectSidebarToggle,
+} from "../../store/UI/ui.selector";
 import { LogoutUser } from "../../store/User/user.actions";
 import { selectUser } from "../../store/User/user.selector";
 import "./Navigation.scss";
@@ -16,6 +19,7 @@ const Navigation = () => {
   const board = useSelector(selectBoard);
   const dispatch = useDispatch();
   const sidebarToggle = useSelector(selectSidebarToggle);
+  const addTaskFormToggle = useSelector(selectAddtaskFormToggle);
 
   //Logout Handler
   const logoutHandler = () => dispatch(LogoutUser);
@@ -43,10 +47,16 @@ const Navigation = () => {
         </h2>
         <div className="navigation__nav--menu">
           <p className="navigation__nav--menu--user">{user.name}</p>
-          <button className="navigation__nav--menu--cta-1">
+          <button
+            className="navigation__nav--menu--cta-1"
+            onClick={() => dispatch(AddtaskFormToggle(!addTaskFormToggle))}
+          >
             <img src={Add} alt="Add SVG" /> &nbsp; Add New Task
           </button>
-          <button className="navigation__nav--menu--mobile-cta">
+          <button
+            className="navigation__nav--menu--mobile-cta"
+            onClick={() => dispatch(AddtaskFormToggle(!addTaskFormToggle))}
+          >
             <img src={Add} alt="Add SVG" />
           </button>
           <button

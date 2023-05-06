@@ -4,6 +4,7 @@ import Board from "../../components/Board/Board";
 import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
 import NewBoardForm from "../../components/NewBoardForm/NewBoardForm";
+import NewTaskForm from "../../components/NewTaskForm/NewTaskForm";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { AllBoards } from "../../store/Boards/board.actions";
 import {
@@ -12,7 +13,10 @@ import {
   selectIsBoardLoading,
 } from "../../store/Boards/board.selector";
 import { BoardFormToggle } from "../../store/UI/ui.actions";
-import { selectBoardFormToggle } from "../../store/UI/ui.selector";
+import {
+  selectAddtaskFormToggle,
+  selectBoardFormToggle,
+} from "../../store/UI/ui.selector";
 import "./DashBoard.scss";
 
 const DashBoard = () => {
@@ -26,8 +30,11 @@ const DashBoard = () => {
   const board = useSelector(selectBoard);
   const isBoardLoading = useSelector(selectIsBoardLoading);
   const boardFormToggle = useSelector(selectBoardFormToggle);
+  const addTaskFormToggle = useSelector(selectAddtaskFormToggle);
+
   return (
     <div className="dashboard">
+      {addTaskFormToggle ? <NewTaskForm /> : <Fragment />}
       {boardFormToggle ? <NewBoardForm /> : <Fragment></Fragment>}
       <Navigation />
       <div className="dashboardMain">

@@ -6,6 +6,8 @@ const INITIAL_STATE = {
   boardFormToggle: false,
   columnFormToggle: false,
   deleteBoardFormToggle: false,
+  subtaskFormToggle: false,
+  addTaskFormToggle: false,
 };
 
 const UiReducer = (state = INITIAL_STATE, action) => {
@@ -22,6 +24,10 @@ const UiReducer = (state = INITIAL_STATE, action) => {
       return { ...state, columnFormToggle: payload };
     case UI_ACTION_TYPES.UI_DELETE_BOARD_FORM_TOGGLE:
       return { ...state, deleteBoardFormToggle: payload };
+    case UI_ACTION_TYPES.UI_SUBTASK_FORM_TOGGLE:
+      return { ...state, subtaskFormToggle: payload };
+    case UI_ACTION_TYPES.UI_ADDTASK_FORM_TOGGLE:
+      return { ...state, addTaskFormToggle: payload };
     default:
       return state;
   }

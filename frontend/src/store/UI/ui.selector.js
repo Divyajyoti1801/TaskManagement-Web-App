@@ -26,3 +26,13 @@ export const selectDeleteBoardFormToggle = createSelector(
   [SelectUIReducer],
   (ui) => ui.deleteBoardFormToggle
 );
+
+export const selectSubtaskFormToggle = createSelector(
+  [SelectUIReducer],
+  (ui) => ui.subtaskFormToggle
+);
+
+export const selectAddtaskFormToggle = createSelector(
+  [SelectUIReducer],
+  (ui) => ui.addTaskFormToggle
+);
