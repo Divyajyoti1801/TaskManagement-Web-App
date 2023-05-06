@@ -4,6 +4,8 @@ const INITIAL_STATE = {
   changeTheme: false,
   sidebarToggle: false,
   boardFormToggle: false,
+  columnFormToggle: false,
+  deleteBoardFormToggle: false,
 };
 
 const UiReducer = (state = INITIAL_STATE, action) => {
@@ -16,6 +18,10 @@ const UiReducer = (state = INITIAL_STATE, action) => {
       return { ...state, sidebarToggle: payload };
     case UI_ACTION_TYPES.UI_BOARD_FORM_TOGGLE:
       return { ...state, boardFormToggle: payload };
+    case UI_ACTION_TYPES.UI_COLUMN_FORM_TOGGLE:
+      return { ...state, columnFormToggle: payload };
+    case UI_ACTION_TYPES.UI_DELETE_BOARD_FORM_TOGGLE:
+      return { ...state, deleteBoardFormToggle: payload };
     default:
       return state;
   }

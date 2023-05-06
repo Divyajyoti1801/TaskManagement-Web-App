@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   Boards: [],
   board: {},
   boardCreationMessage: "",
+  boardDeletionMessage: "",
   error: null,
 };
 
@@ -31,14 +32,18 @@ const boardReducer = (state = INITIAL_STATE, action) => {
     case BOARD_ACTION_TYPES.CLEAR_CURRENT_BOARD:
       return { ...state, board: payload };
     case BOARD_ACTION_TYPES.DELETE_BOARD_START:
-      return state;
+      return { ...state };
     case BOARD_ACTION_TYPES.DELETE_BOARD_SUCCESS:
-      return { ...state, board: null };
+      return { ...state, board: null, boardDeletionMessage: payload };
     case BOARD_ACTION_TYPES.DELETE_BOARD_FAILED:
       return { ...state, error: payload };
     case BOARD_ACTION_TYPES.CREATE_BOARD_SUCCESS:
       return { ...state, boardCreationMessage: payload };
     case BOARD_ACTION_TYPES.CREATE_BOARD_FAILED:
+      return { ...state, error: payload };
+    case BOARD_ACTION_TYPES.CREATE_COLUMN_SUCCESS:
+      return { ...state };
+    case BOARD_ACTION_TYPES.CREATE_COLUMN_FAILED:
       return { ...state, error: payload };
     default:
       return state;

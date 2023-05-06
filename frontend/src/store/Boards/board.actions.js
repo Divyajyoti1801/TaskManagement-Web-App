@@ -42,10 +42,29 @@ export const OneBoard = (id) => async (dispatch) => {
 export const DeleteBoard = (id) => async (dispatch) => {
   try {
     dispatch(createReducer(BOARD_ACTION_TYPES.DELETE_BOARD_START));
-    await axios.delete(`/board/delete/${id}`);
-    dispatch(createReducer(BOARD_ACTION_TYPES.DELETE_BOARD_SUCCESS));
+    const { data } = await axios.delete(`/board/delete/${id}`);
+    if (data.message) {
+      dispatch(
+        createReducer(BOARD_ACTION_TYPES.DELETE_BOARD_SUCCESS, data.message)
+      );
+      dispatch(AllBoards);
+    }
   } catch (error) {
     dispatch(createReducer(BOARD_ACTION_TYPES.DELETE_BOARD_FAILED, error));
+  }
+};
+
+export const CreateColumn = (bid, name) => async (dispatch) => {
+  try {
+    const { data } = await axios.post(`/column/new/${bid}`, {
+      name,
+    });
+    if (data.message) {
+      dispatch(BOARD_ACTION_TYPES.CREATE_COLUMN_SUCCESS);
+      dispatch(AllBoards);
+    }
+  } catch (error) {
+    dispatch(createReducer(BOARD_ACTION_TYPES.CREATE_COLUMN_FAILED, error));
   }
 };
 

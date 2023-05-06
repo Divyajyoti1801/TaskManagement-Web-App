@@ -16,3 +16,13 @@ export const selectBoardFormToggle = createSelector(
   [SelectUIReducer],
   (ui) => ui.boardFormToggle
 );
+
+export const selectColumnFormToggle = createSelector(
+  [SelectUIReducer],
+  (ui) => ui.columnFormToggle
+);
+
+export const selectDeleteBoardFormToggle = createSelector(
+  [SelectUIReducer],
+  (ui) => ui.deleteBoardFormToggle
+);

@@ -26,3 +26,8 @@ export const selectBoardCreateMessage = createSelector(
   [selectBoardReducer],
   (data) => data.boardCreationMessage
 );
+
+export const selectBoardDeletionMessage = createSelector(
+  [selectBoardReducer],
+  (data) => data.boardDeletionMessage
+);

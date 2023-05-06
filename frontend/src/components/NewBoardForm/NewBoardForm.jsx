@@ -39,12 +39,17 @@ const NewBoardForm = () => {
       setBoardName("");
       setColumns([]);
       dispatch(BoardFormToggle(false));
-    } else {
       toast.error("Board Not Created");
     }
   };
   return (
     <form className="boardForm" onSubmit={onSubmitHandler}>
+      <button
+        className="boardForm__close"
+        onClick={() => dispatch(BoardFormToggle(false))}
+      >
+        <img src={cross} alt="Cross SVG" />
+      </button>
       <h1 className="boardForm__header">Add New Board</h1>
       <div className="boardForm__container">
         <label className="boardForm__container--label">Name</label>

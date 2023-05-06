@@ -1,0 +1,67 @@
+@import "../../styles/variables";
+
+.deleteBoardForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: $box-shadow;
+  background: $color-main-WHITE;
+  padding: 3.2rem;
+  @include FLEX(column, center, center);
+  border-radius: $border-radius;
+
+  &__header {
+    width: 100%;
+    color: $color-main-RED;
+    margin-bottom: 2.8rem;
+    font-size: $font-size-heading-XL;
+    font-weight: $font-weight-XL;
+  }
+
+  &__text {
+    width: 100%;
+    font-size: $font-size-text-M;
+    font-weight: $font-weight-L;
+    color: $color-main-MEDIUM-GREY;
+    margin-bottom: 2.6rem;
+  }
+
+  &__cta {
+    width: 100%;
+    @include FLEX(row, center, center);
+    gap: 2rem;
+
+    &--delete {
+      width: 50%;
+      @include BTN(
+        $color-main-RED,
+        $color-main-WHITE,
+        $font-size-heading-M,
+        1.4rem,
+        2.8rem
+      );
+      &:hover,
+      &:active,
+      &:focus {
+        @include BTN-HOVER($color-hover-RED, $color-main-WHITE);
+      }
+    }
+
+    &--cancel {
+      width: 50%;
+      @include BTN(
+        $color-lines-LIGHT,
+        $color-main-PURPLE,
+        $font-size-heading-M,
+        1.4rem,
+        2.8rem
+      );
+      &:hover,
+      &:active,
+      &:focus {
+        @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+      }
+    }
+  }
+}

@@ -17,11 +17,13 @@ app.use(express.urlencoded({ extended: false }));
 
 //Major Routes Imports
 import boardRouter from "./routes/BoardRoutes.js";
+import taskRouter from "./routes/TaskRoutes.js";
 import userRouter from "./routes/UserRoutes.js";
 
 //Major EndPoint
 app.use("/api", userRouter);
 app.use("/api", boardRouter);
+app.use("/api", taskRouter);
 
 //Middleware
 app.use(ErrorMiddleware);

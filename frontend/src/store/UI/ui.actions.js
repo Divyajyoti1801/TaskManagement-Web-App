@@ -9,3 +9,9 @@ export const toggleSidebar = (boolean) =>
 
 export const BoardFormToggle = (boolean) =>
   createReducer(UI_ACTION_TYPES.UI_BOARD_FORM_TOGGLE, boolean);
+
+export const ColumnFormToggle = (boolean) =>
+  createReducer(UI_ACTION_TYPES.UI_COLUMN_FORM_TOGGLE, boolean);
+
+export const DeleteBoardFormToggle = (boolean) =>
+  createReducer(UI_ACTION_TYPES.UI_DELETE_BOARD_FORM_TOGGLE, boolean);

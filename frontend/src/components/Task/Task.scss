@@ -7,6 +7,7 @@
   border-radius: $border-radius;
   @include FLEX(column, center, flex-start);
   gap: 1rem;
+  cursor: pointer;
 
   &__title {
     font-size: $font-size-heading-M;

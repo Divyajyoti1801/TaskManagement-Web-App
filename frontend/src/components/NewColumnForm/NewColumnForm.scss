@@ -1,0 +1,74 @@
+@import "../../styles/variables";
+
+.columnForm {
+  background: $color-main-WHITE;
+  border-radius: $border-radius;
+  padding: 3.2rem;
+  width: 40vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  @include FLEX(column, center, center);
+  box-shadow: $box-shadow;
+
+  &__close {
+    position: absolute;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    right: 2%;
+    top: 5%;
+  }
+
+  &__header {
+    width: 100%;
+    margin-bottom: 2.8rem;
+  }
+
+  &__container {
+    @include FLEX(column, center, center);
+    gap: 1rem;
+    width: 100%;
+    &--label {
+      width: 100%;
+      font-size: $font-size-heading-M;
+      font-weight: $font-weight-L;
+      color: $color-main-MEDIUM-GREY;
+    }
+    &--input {
+      width: 100%;
+      padding: 1.2rem;
+      padding-left: 2.4rem;
+      font-size: $font-size-heading-M;
+      border-radius: $border-radius;
+      font-weight: $font-weight-M;
+      border: 2px solid $color-lines-LIGHT;
+      outline: none;
+
+      &::placeholder {
+        color: $color-lines-LIGHT;
+      }
+      &:required {
+        border-color: $color-hover-PURPLE;
+      }
+    }
+  }
+  &__cta {
+    margin-top: 2.4rem;
+    width: 100%;
+    @include BTN(
+      $color-main-PURPLE,
+      $color-main-WHITE,
+      $font-size-heading-M,
+      1.2rem,
+      2.4rem
+    );
+
+    &:hover,
+    &:active,
+    &:focus {
+      @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+    }
+  }
+}

@@ -13,6 +13,14 @@
   padding: 3.2rem;
   @include FLEX(column, flex-start, center);
   gap: 1.6rem;
+  &__close {
+    position: absolute;
+    top: 8%;
+    right: 8%;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
   &__header {
     width: 100%;
     margin-bottom: 2.8rem;

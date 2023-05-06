@@ -6,23 +6,46 @@
   background: $color-back-GREY;
   @include FLEX(row, flex-start, center);
   padding: 2.4rem;
+  position: relative;
+
+  &__delete {
+    background: $color-main-WHITE;
+    padding: 0.8rem;
+    border-radius: 100%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: $transition;
+    z-index: 20;
+    position: absolute;
+    bottom: 5%;
+    left: 2%;
+    box-shadow: $box-shadow;
+
+    &:hover,
+    &:active {
+      border-color: $color-hover-RED;
+    }
+  }
 
   &__empty {
     width: 100%;
     height: 100%;
-    @include FLEX(row, center, center);
+    @include FLEX(column, center, center);
+    gap: 2rem;
     &--message {
-      font-size: $font-size-heading-XL;
-      font-weight: $font-weight-XL;
+      font-size: $font-size-heading-L;
+      font-weight: $font-weight-L;
       color: $color-main-MEDIUM-GREY;
     }
     &--cta {
+      @include FLEX(row, center, center);
+      gap: 1.2rem;
       @include BTN(
         $color-main-PURPLE,
         $color-main-WHITE,
-        $font-size-heading-L,
-        1.8rem,
-        3.2rem
+        $font-size-heading-M,
+        1.4rem,
+        2.8rem
       );
       &:hover,
       &:active,
@@ -39,13 +62,36 @@
     gap: 2.4rem;
     .column {
       width: 28rem;
-      @include FLEX(column, center, flex-start);
+      height: 100%;
+      @include FLEX(column, flex-start, flex-start);
       gap: 2.4rem;
       &__header {
         color: $color-main-MEDIUM-GREY;
         font-size: $font-size-heading-S;
         text-transform: uppercase;
         letter-spacing: $letter-spacing-2;
+      }
+    }
+    &--cta {
+      width: 28rem;
+      height: 100%;
+      padding: 2.8rem;
+      background: $color-lines-LIGHT;
+      @include FLEX(row, center, center);
+      cursor: pointer;
+      transition: $transition;
+      border-radius: $border-radius;
+      &--text {
+        @include FLEX(row, center, center);
+        gap: 1rem;
+        color: $color-main-MEDIUM-GREY;
+        font-size: $font-size-heading-L;
+        font-weight: $font-weight-XL;
+      }
+
+      &:hover,
+      &:active {
+        background: $color-hover-PURPLE;
       }
     }
   }
