@@ -1,18 +1,50 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-
+import { toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import cross from "../../assets/icon-cross.svg";
+import { CreateBoard } from "../../store/Boards/board.actions";
+import { selectBoardCreateMessage } from "../../store/Boards/board.selector";
+import { BoardFormToggle } from "../../store/UI/ui.actions";
 import "./NewBoardForm.scss";
 
-const defaultFormInput = {
-  name: "",
-  columns: [],
-};
-
 const NewBoardForm = () => {
-  const [formInput, setFormInput] = useState(defaultFormInput);
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [boardName, setBoardName] = useState("");
+  const [columns, setColumns] = useState([]);
+
+  const OnChangeBoardName = (event) => setBoardName(event.target.value);
+
+  const OnChangeHandlerColumn = (event, index) => {
+    const updatedColumns = [...columns];
+    updatedColumns[index] = event.target.value;
+    setColumns(updatedColumns);
+  };
+
+  const handleAddColumns = () => setColumns([...columns, ""]);
+
+  const handleDeleteColumns = (index) => {
+    const updatedColumns = [...columns];
+    updatedColumns.splice(index, 1);
+    setColumns(updatedColumns);
+  };
+  const boardCreationMessage = useSelector(selectBoardCreateMessage);
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    const name = boardName;
+    const dataColumns = columns.map((col) => ({ name: col }));
+    dispatch(CreateBoard(name, dataColumns));
+
+    if (boardCreationMessage) {
+      toast.success(boardCreationMessage);
+      setBoardName("");
+      setColumns([]);
+      dispatch(BoardFormToggle(false));
+    } else {
+      toast.error("Board Not Created");
+    }
+  };
   return (
-    <form className="boardForm">
+    <form className="boardForm" onSubmit={onSubmitHandler}>
       <h1 className="boardForm__header">Add New Board</h1>
       <div className="boardForm__container">
         <label className="boardForm__container--label">Name</label>
@@ -20,13 +52,33 @@ const NewBoardForm = () => {
           type="text"
           className="boardForm__container--input"
           placeholder="e.g. Web Design"
+          value={boardName}
+          onChange={OnChangeBoardName}
           required
         />
       </div>
       <div className="boardForm__container">
         <label className="boardForm__container--label">Columns</label>
-        <input type="text" className="boardForm__container--input" />
-        <button className="column-cta">
+        {columns.map((col, index) => (
+          <div key={index} className="boardForm__container--array">
+            <input
+              type="text"
+              value={col}
+              className="boardForm__container--array--input"
+              onChange={(event) => OnChangeHandlerColumn(event, index)}
+              required
+              placeholder="Column Name"
+            />
+            <button
+              type="button"
+              className="boardForm__container--array--cta"
+              onClick={() => handleDeleteColumns(index)}
+            >
+              <img src={cross} alt="Cross SVG" />
+            </button>
+          </div>
+        ))}
+        <button type="button" className="column-cta" onClick={handleAddColumns}>
           <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
             <path
               fill="#FFF"
@@ -36,7 +88,9 @@ const NewBoardForm = () => {
           Add New Column
         </button>
       </div>
-      <button className="boardForm__btn">Create Board</button>
+      <button type="submit" className="boardForm__btn">
+        Create Board
+      </button>
     </form>
   );
 };

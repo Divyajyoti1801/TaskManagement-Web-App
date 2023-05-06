@@ -42,6 +42,38 @@
       &::placeholder {
         color: $color-lines-LIGHT;
       }
+
+      &:required {
+        border-color: $color-hover-PURPLE;
+      }
+    }
+    &--array {
+      width: 100%;
+      @include FLEX(row, center, center);
+      gap: 1.6rem;
+      &--input {
+        width: 100%;
+        font-size: $font-size-heading-M;
+        font-weight: $font-weight-M;
+        padding: 1rem;
+        padding-left: 2rem;
+        border-radius: $border-radius;
+        border: 1px solid $color-lines-LIGHT;
+        outline: none;
+
+        &::placeholder {
+          color: $color-lines-LIGHT;
+        }
+
+        &:required {
+          border-color: $color-hover-PURPLE;
+        }
+      }
+      &--cta {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
     }
     .column-cta {
       @include FLEX(row, center, center);

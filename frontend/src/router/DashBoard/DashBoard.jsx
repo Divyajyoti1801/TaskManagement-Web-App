@@ -11,6 +11,7 @@ import {
   selectBoards,
   selectIsBoardLoading,
 } from "../../store/Boards/board.selector";
+import { BoardFormToggle } from "../../store/UI/ui.actions";
 import { selectBoardFormToggle } from "../../store/UI/ui.selector";
 import "./DashBoard.scss";
 
@@ -41,7 +42,10 @@ const DashBoard = () => {
                   <h3 className="dashboardMain__canvas--empty--text">
                     No board is selected / Create new board
                   </h3>
-                  <button className="dashboardMain__canvas--empty--cta">
+                  <button
+                    className="dashboardMain__canvas--empty--cta"
+                    onClick={() => dispatch(BoardFormToggle(!boardFormToggle))}
+                  >
                     <svg
                       width="16"
                       height="16"

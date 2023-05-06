@@ -21,3 +21,8 @@ export const selectIsBoardLoading = createSelector(
   [selectBoardReducer],
   (data) => data.isBoardLoading
 );
+
+export const selectBoardCreateMessage = createSelector(
+  [selectBoardReducer],
+  (data) => data.boardCreationMessage
+);

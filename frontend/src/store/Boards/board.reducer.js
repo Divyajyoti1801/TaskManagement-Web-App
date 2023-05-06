@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   isBoardLoading: false,
   Boards: [],
   board: {},
+  boardCreationMessage: "",
   error: null,
 };
 
@@ -34,6 +35,10 @@ const boardReducer = (state = INITIAL_STATE, action) => {
     case BOARD_ACTION_TYPES.DELETE_BOARD_SUCCESS:
       return { ...state, board: null };
     case BOARD_ACTION_TYPES.DELETE_BOARD_FAILED:
+      return { ...state, error: payload };
+    case BOARD_ACTION_TYPES.CREATE_BOARD_SUCCESS:
+      return { ...state, boardCreationMessage: payload };
+    case BOARD_ACTION_TYPES.CREATE_BOARD_FAILED:
       return { ...state, error: payload };
     default:
       return state;

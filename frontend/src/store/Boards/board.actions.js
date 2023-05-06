@@ -12,6 +12,23 @@ export const AllBoards = async (dispatch) => {
   }
 };
 
+export const CreateBoard = (name, columns) => async (dispatch) => {
+  try {
+    const { data } = await axios.post("/board/new", {
+      name,
+      columns,
+    });
+    if (data.message) {
+      dispatch(
+        createReducer(BOARD_ACTION_TYPES.CREATE_BOARD_SUCCESS, data.message)
+      );
+      dispatch(AllBoards);
+    }
+  } catch (error) {
+    dispatch(createReducer(BOARD_ACTION_TYPES.CREATE_BOARD_FAILED, error));
+  }
+};
+
 export const OneBoard = (id) => async (dispatch) => {
   try {
     dispatch(createReducer(BOARD_ACTION_TYPES.LOAD_CURRENT_BOARD));
