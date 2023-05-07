@@ -50,12 +50,14 @@ const Navigation = () => {
           <button
             className="navigation__nav--menu--cta-1"
             onClick={() => dispatch(AddtaskFormToggle(!addTaskFormToggle))}
+            disabled={board && board?.columns ? false : true}
           >
             <img src={Add} alt="Add SVG" /> &nbsp; Add New Task
           </button>
           <button
             className="navigation__nav--menu--mobile-cta"
             onClick={() => dispatch(AddtaskFormToggle(!addTaskFormToggle))}
+            disabled={board && board?.columns ? false : true}
           >
             <img src={Add} alt="Add SVG" />
           </button>

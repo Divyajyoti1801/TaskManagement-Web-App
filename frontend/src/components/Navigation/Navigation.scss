@@ -75,6 +75,9 @@
         @include BREAK($bp-tablet) {
           display: none;
         }
+        &:disabled {
+          @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+        }
       }
       &--cta-2 {
         @include FLEX(row, center, center);
@@ -105,6 +108,9 @@
           &:active,
           &:hover,
           &:focus {
+            @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
+          }
+          &:disabled {
             @include BTN-HOVER($color-hover-PURPLE, $color-main-WHITE);
           }
         }

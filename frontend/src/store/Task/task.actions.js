@@ -17,10 +17,19 @@ export const CreateTask =
         dispatch(
           createReducer(TASK_ACTION_TYPE.CREATE_TASK_SUCCESS, data.message)
         );
-        dispatch(AllBoards);
         dispatch(AddtaskFormToggle(false));
+        dispatch(AllBoards);
       }
     } catch (error) {
       dispatch(TASK_ACTION_TYPE.CREATE_TASK_FAILED, error);
     }
   };
+
+export const SelectTask = (task) => (dispatch) => {
+  try {
+    dispatch(createReducer(TASK_ACTION_TYPE.SELECT_TASK_LOADING));
+    dispatch(createReducer(TASK_ACTION_TYPE.SELECT_TASK_SUCCESS, task));
+  } catch (error) {
+    dispatch(createReducer(TASK_ACTION_TYPE.SELECT_TASK_FAILED, error));
+  }
+};

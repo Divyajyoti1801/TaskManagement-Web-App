@@ -16,3 +16,5 @@ export const createTask = AsyncHandler(async (req, res, next) => {
   await board.save();
   res.status(200).json({ message: "Task Created Successfully" });
 });
+
+export const subtaskUpdation = AsyncHandler(async (req, res, next) => {});

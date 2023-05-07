@@ -1,64 +1,47 @@
 @import "../../styles/variables";
 
-.boardForm {
-  width: 30vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: $color-main-WHITE;
+.boardFormContainer {
+  width: 100%;
+  height: 100%;
   z-index: 100;
-  box-shadow: $box-shadow;
-  border-radius: $border-radius;
-  padding: 3.2rem;
-  @include FLEX(column, flex-start, center);
-  gap: 1.6rem;
-  &__close {
-    position: absolute;
-    top: 8%;
-    right: 8%;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  &__header {
-    width: 100%;
-    margin-bottom: 2.8rem;
-  }
+  background: $color-back-blur;
+  position: absolute;
+  @include FLEX(row, center, center);
 
-  &__container {
-    width: 100%;
-    @include FLEX(column, center, center);
-    gap: 1rem;
-
-    &--label {
-      width: 100%;
-      font-size: $font-size-heading-M;
-      font-weight: $font-weight-M;
-      color: $color-main-MEDIUM-GREY;
+  .boardForm {
+    width: 40%;
+    background: $color-main-WHITE;
+    z-index: 100;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    padding: 3.2rem;
+    @include FLEX(column, flex-start, center);
+    gap: 1.6rem;
+    position: relative;
+    &__close {
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
-    &--input {
+    &__header {
       width: 100%;
-      font-size: $font-size-heading-M;
-      font-weight: $font-weight-M;
-      padding: 1rem;
-      padding-left: 2rem;
-      border-radius: $border-radius;
-      border: 1px solid $color-lines-LIGHT;
-      outline: none;
-
-      &::placeholder {
-        color: $color-lines-LIGHT;
-      }
-
-      &:required {
-        border-color: $color-hover-PURPLE;
-      }
+      margin-bottom: 2.8rem;
     }
-    &--array {
+
+    &__container {
       width: 100%;
-      @include FLEX(row, center, center);
-      gap: 1.6rem;
+      @include FLEX(column, center, center);
+      gap: 1rem;
+
+      &--label {
+        width: 100%;
+        font-size: $font-size-heading-M;
+        font-weight: $font-weight-M;
+        color: $color-main-MEDIUM-GREY;
+      }
       &--input {
         width: 100%;
         font-size: $font-size-heading-M;
@@ -77,43 +60,66 @@
           border-color: $color-hover-PURPLE;
         }
       }
-      &--cta {
-        background: transparent;
-        border: none;
-        cursor: pointer;
+      &--array {
+        width: 100%;
+        @include FLEX(row, center, center);
+        gap: 1.6rem;
+        &--input {
+          width: 100%;
+          font-size: $font-size-heading-M;
+          font-weight: $font-weight-M;
+          padding: 1rem;
+          padding-left: 2rem;
+          border-radius: $border-radius;
+          border: 1px solid $color-lines-LIGHT;
+          outline: none;
+
+          &::placeholder {
+            color: $color-lines-LIGHT;
+          }
+
+          &:required {
+            border-color: $color-hover-PURPLE;
+          }
+        }
+        &--cta {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+        }
       }
-    }
-    .column-cta {
-      @include FLEX(row, center, center);
-      gap: 0.8rem;
-      width: 100%;
-      border-radius: $border-radius-BTN;
-      padding: 1.2rem 2.4rem;
-      color: $color-main-PURPLE;
-      background: $color-lines-LIGHT;
-      font-size: $font-size-heading-M;
-      font-family: $font-family;
-      font-weight: $font-weight-L;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      svg {
-        path {
-          fill: $color-main-PURPLE;
+      .column-cta {
+        @include FLEX(row, center, center);
+        gap: 0.8rem;
+        width: 100%;
+        border-radius: $border-radius-BTN;
+        padding: 1.2rem 2.4rem;
+        color: $color-main-PURPLE;
+        background: $color-lines-LIGHT;
+        font-size: $font-size-heading-M;
+        font-family: $font-family;
+        font-weight: $font-weight-L;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        svg {
+          path {
+            fill: $color-main-PURPLE;
+          }
         }
       }
     }
-  }
 
-  &__btn {
-    margin-top: 2.8rem;
-    width: 100%;
-    @include BTN(
-      $color-main-PURPLE,
-      $color-main-WHITE,
-      $font-size-heading-M,
-      1.2rem,
-      2.4rem
-    );
+    &__btn {
+      margin-top: 2.8rem;
+      width: 100%;
+      @include BTN(
+        $color-main-PURPLE,
+        $color-main-WHITE,
+        $font-size-heading-M,
+        1.2rem,
+        2.4rem
+      );
+    }
   }
 }

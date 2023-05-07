@@ -22,25 +22,27 @@ const DeleteBoardForm = () => {
   };
 
   return (
-    <div className="deleteBoardForm">
-      <h1 className="deleteBoardForm__header">Delete this board?</h1>
-      <p className="deleteBoardForm__text">
-        Are you sure you want to delete the '{board?.name}' board? This action
-        will remove all columns and Tasks and cannot be reversed.
-      </p>
-      <div className="deleteBoardForm__cta">
-        <button
-          className="deleteBoardForm__cta--delete"
-          onClick={onClickHandler}
-        >
-          Delete
-        </button>
-        <button
-          className="deleteBoardForm__cta--cancel"
-          onClick={() => dispatch(DeleteBoardFormToggle(false))}
-        >
-          Cancel
-        </button>
+    <div className="deleteBoardFormContainer">
+      <div className="deleteBoardForm">
+        <h1 className="deleteBoardForm__header">Delete this board?</h1>
+        <p className="deleteBoardForm__text">
+          Are you sure you want to delete the '{board?.name}' board? This action
+          will remove all columns and Tasks and cannot be reversed.
+        </p>
+        <div className="deleteBoardForm__cta">
+          <button
+            className="deleteBoardForm__cta--delete"
+            onClick={onClickHandler}
+          >
+            Delete
+          </button>
+          <button
+            className="deleteBoardForm__cta--cancel"
+            onClick={() => dispatch(DeleteBoardFormToggle(false))}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -21,28 +21,30 @@ const NewColumnForm = () => {
   };
 
   return (
-    <form className="columnForm" onSubmit={onSubmitHandler}>
-      <button
-        className="columnForm__close"
-        onClick={() => dispatch(ColumnFormToggle(false))}
-      >
-        <img src={cross} alt="Cross SVG" />
-      </button>
-      <h1 className="columnForm__header">Add New Column</h1>
-      <div className="columnForm__container">
-        <label className="columnForm__container--label">Column</label>
-        <input
-          className="columnForm__container--input"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          placeholder="Column name"
-          required
-        />
-      </div>
-      <button type="submit" className="columnForm__cta">
-        Create New Column
-      </button>
-    </form>
+    <div className="columnFormContainer">
+      <form className="columnForm" onSubmit={onSubmitHandler}>
+        <button
+          className="columnForm__close"
+          onClick={() => dispatch(ColumnFormToggle(false))}
+        >
+          <img src={cross} alt="Cross SVG" />
+        </button>
+        <h1 className="columnForm__header">Add New Column</h1>
+        <div className="columnForm__container">
+          <label className="columnForm__container--label">Column</label>
+          <input
+            className="columnForm__container--input"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            placeholder="Column name"
+            required
+          />
+        </div>
+        <button type="submit" className="columnForm__cta">
+          Create New Column
+        </button>
+      </form>
+    </div>
   );
 };
 

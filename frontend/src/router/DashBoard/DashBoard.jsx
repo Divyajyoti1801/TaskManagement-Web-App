@@ -1,11 +1,14 @@
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Board from "../../components/Board/Board";
+import DeleteBoardForm from "../../components/DeleteBoardForm/DeleteBoardForm";
 import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
 import NewBoardForm from "../../components/NewBoardForm/NewBoardForm";
+import NewColumnForm from "../../components/NewColumnForm/NewColumnForm";
 import NewTaskForm from "../../components/NewTaskForm/NewTaskForm";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import SubtaskForm from "../../components/SubtaskForm/SubtaskForm";
 import { AllBoards } from "../../store/Boards/board.actions";
 import {
   selectBoard,
@@ -16,6 +19,9 @@ import { BoardFormToggle } from "../../store/UI/ui.actions";
 import {
   selectAddtaskFormToggle,
   selectBoardFormToggle,
+  selectColumnFormToggle,
+  selectDeleteBoardFormToggle,
+  selectSubtaskFormToggle,
 } from "../../store/UI/ui.selector";
 import "./DashBoard.scss";
 
@@ -31,11 +37,17 @@ const DashBoard = () => {
   const isBoardLoading = useSelector(selectIsBoardLoading);
   const boardFormToggle = useSelector(selectBoardFormToggle);
   const addTaskFormToggle = useSelector(selectAddtaskFormToggle);
+  const deleteBoardFormToggle = useSelector(selectDeleteBoardFormToggle);
+  const columnFormToggle = useSelector(selectColumnFormToggle);
+  const subtaskFormToggle = useSelector(selectSubtaskFormToggle);
 
   return (
     <div className="dashboard">
       {addTaskFormToggle ? <NewTaskForm /> : <Fragment />}
-      {boardFormToggle ? <NewBoardForm /> : <Fragment></Fragment>}
+      {boardFormToggle ? <NewBoardForm /> : <Fragment />}
+      {deleteBoardFormToggle ? <DeleteBoardForm /> : <Fragment />}
+      {columnFormToggle ? <NewColumnForm /> : <Fragment />}
+      {subtaskFormToggle ? <SubtaskForm /> : <Fragment />}
       <Navigation />
       <div className="dashboardMain">
         <Sidebar Boards={Boards} />

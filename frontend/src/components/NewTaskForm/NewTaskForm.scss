@@ -7,4 +7,117 @@
   background: $color-back-blur;
   z-index: 100;
   @include FLEX(row, center, center);
+  .newTask {
+    background: $color-main-WHITE;
+    border-radius: $border-radius;
+    padding: 3.2rem;
+    width: 30%;
+    @include FLEX(column, center, center);
+    position: relative;
+
+    &__cross {
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    &__header {
+      width: 100%;
+      font-size: $font-size-heading-XL;
+      font-weight: $font-weight-XL;
+      margin-bottom: 2.8rem;
+    }
+
+    &__container {
+      width: 100%;
+      @include FLEX(column, center, center);
+      gap: 1rem;
+      padding-bottom: 2rem;
+      &--label {
+        width: 100%;
+        font-size: $font-size-heading-M;
+        font-weight: $font-weight-M;
+        color: $color-main-MEDIUM-GREY;
+      }
+      &--input {
+        width: 100%;
+        padding: 1.2rem 2.2rem;
+        border-radius: $border-radius;
+        font-size: $font-size-heading-M;
+        font-weight: $font-weight-M;
+        border: 2px solid $color-lines-LIGHT;
+        outline: none;
+
+        &::placeholder {
+          color: $color-lines-LIGHT;
+        }
+        &:required {
+          border-color: $color-hover-PURPLE;
+        }
+      }
+      &--subtask {
+        width: 100%;
+        @include FLEX(row, center, center);
+        gap: 0.8rem;
+        &--input {
+          width: 100%;
+          padding: 1rem 2.2rem;
+          border-radius: $border-radius;
+          font-size: $font-size-heading-M;
+          font-weight: $font-weight-M;
+          border: 2px solid $color-lines-LIGHT;
+          outline: none;
+          &::placeholder {
+            color: $color-lines-LIGHT;
+          }
+          &:required {
+            border-color: $color-hover-PURPLE;
+          }
+        }
+        &--cta {
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+      }
+      &--add {
+        width: 100%;
+        @include FLEX(row, center, center);
+        gap: 0.8rem;
+        @include BTN(
+          $color-lines-LIGHT,
+          $color-main-PURPLE,
+          $font-size-heading-S,
+          1.4rem,
+          2.4rem
+        );
+        font-weight: $font-weight-L;
+      }
+
+      &--select {
+        width: 100%;
+        padding: 1rem 1.6rem;
+        border-radius: $border-radius;
+        font-size: $font-size-heading-M;
+        font-weight: $font-weight-M;
+        border: 2px solid $color-lines-LIGHT;
+        outline: none;
+        appearance: none;
+        cursor: pointer;
+      }
+    }
+    &__submit {
+      width: 100%;
+      @include BTN(
+        $color-main-PURPLE,
+        $color-main-WHITE,
+        $font-size-heading-M,
+        1.2rem,
+        2.4rem
+      );
+    }
+  }
 }

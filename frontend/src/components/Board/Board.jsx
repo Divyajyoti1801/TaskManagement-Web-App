@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Add from "../../assets/icon-add-task-mobile.svg";
 import Bin from "../../assets/icon-bin.svg";
@@ -10,8 +9,7 @@ import {
   selectColumnFormToggle,
   selectDeleteBoardFormToggle,
 } from "../../store/UI/ui.selector";
-import DeleteBoardForm from "../DeleteBoardForm/DeleteBoardForm";
-import NewColumnForm from "../NewColumnForm/NewColumnForm";
+
 import Task from "../Task/Task";
 import "./Board.scss";
 
@@ -28,8 +26,7 @@ const Board = ({ board }) => {
       >
         <img src={Bin} alt="Bin SVG" />
       </button>
-      {deleteBoardFormToggle ? <DeleteBoardForm /> : <Fragment />}
-      {columnFormToggle ? <NewColumnForm /> : <Fragment />}
+
       {columns.length !== 0 ? (
         <div className="board__content">
           {columns.map((column) => (
