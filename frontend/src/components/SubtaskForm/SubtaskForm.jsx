@@ -1,8 +1,16 @@
 import { Fragment, useState } from "react";
+import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import cross from "../../assets/icon-cross.svg";
+import { OneBoard } from "../../store/Boards/board.actions";
 import { selectBoard } from "../../store/Boards/board.selector";
-import { selectTask, selectTaskLoading } from "../../store/Task/task.selector";
+import { DeleteTask, UpdateTask } from "../../store/Task/task.actions";
+import {
+  selectDeleteTaskMessage,
+  selectTask,
+  selectTaskLoading,
+  selectUpdateTaskMessage,
+} from "../../store/Task/task.selector";
 import { SubtaskFormToggle } from "../../store/UI/ui.actions";
 import Loader from "../Loader/Loader";
 import "./SubtaskForm.scss";
@@ -14,22 +22,60 @@ const SubtaskForm = () => {
   const [status, setStatus] = useState(task.status);
   const board = useSelector(selectBoard);
   const dispatch = useDispatch();
+  const [column] = board.columns.filter((col) => col.name === task.status);
+  const updateTaskMessage = useSelector(selectUpdateTaskMessage);
+  const deleteTaskMessage = useSelector(selectDeleteTaskMessage);
 
   const handleSubtaskChange = (event, index) => {
     const newSubtasks = [...subtasks];
     newSubtasks[index].isCompleted = event.target.checked;
     setSubtasks(newSubtasks);
+    task.subtasks = [...newSubtasks];
   };
 
   const handleStatusChange = (event) => {
     setStatus(event.target.value);
+  };
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    try {
+      dispatch(
+        UpdateTask(
+          board._id,
+          column._id,
+          task._id,
+          task.title,
+          task.description,
+          status,
+          subtasks
+        )
+      );
+      if (updateTaskMessage) {
+        toast.success("Task Updated Successfully");
+        dispatch(OneBoard(board._id));
+      }
+    } catch (error) {
+      toast.error("Please Submit Again");
+    }
+  };
+  const deleteTaskHandler = () => {
+    try {
+      dispatch(DeleteTask(board._id, column._id, task._id));
+      if (deleteTaskMessage) {
+        toast.success("Task Deleted Successfully");
+        dispatch(OneBoard(board._id));
+      }
+    } catch (error) {
+      toast.error("Task Deletion Failed");
+    }
   };
   return (
     <div className="subtaskFormContainer">
       {taskLoading ? (
         <Loader />
       ) : (
-        <form className="subtaskForm">
+        <form className="subtaskForm" onSubmit={onSubmitHandler}>
           <button
             className="subtaskForm__cross"
             onClick={() => dispatch(SubtaskFormToggle(false))}
@@ -53,6 +99,7 @@ const SubtaskForm = () => {
                   type="checkbox"
                   className="subtaskForm__container--content--input"
                   onChange={(event) => handleSubtaskChange(event, index)}
+                  checked={subtask.isCompleted ? true : false}
                 />
                 <label className="subtaskForm__container--content--label">
                   {subtask.isCompleted ? (
@@ -85,7 +132,12 @@ const SubtaskForm = () => {
             </select>
           </div>
           <div className="subtaskForm__cta">
-            <button className="subtaskForm__cta--delete">Delete Task</button>
+            <button
+              className="subtaskForm__cta--delete"
+              onClick={deleteTaskHandler}
+            >
+              Delete Task
+            </button>
             <button className="subtaskForm__cta--submit" type="submit">
               Update Task Progress
             </button>

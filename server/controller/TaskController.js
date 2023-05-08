@@ -18,7 +18,34 @@ export const createTask = AsyncHandler(async (req, res, next) => {
 });
 
 export const subtaskUpdation = AsyncHandler(async (req, res, next) => {
-  const { subtasks, status } = req.body;
+  const { title, description, subtasks, status } = req.body;
+  const { bid, cid, tid } = req.params;
+  const board = await Boards.findById(bid);
+  if (!board) {
+    return next(new ErrorHandler("Board not found", 404));
+  }
+  let [column] = board.columns.filter((col) => col._id.toString() === cid);
+  if (!column) {
+    return next(new ErrorHandler("Column not Found", 404));
+  }
+
+  let [task] = column.tasks.filter((task) => task._id.toString() === tid);
+  if (!task) {
+    return next(new ErrorHandler("Task Not Found", 404));
+  }
+  if (status === column.name) {
+    task.subtasks = [...subtasks];
+  } else {
+    let [changeColumn] = board.columns.filter((col) => col.name === status);
+    const newTask = { title, description, status, subtasks };
+    column.tasks = column.tasks.filter((t) => t._id.toString() !== tid);
+    changeColumn.tasks.push(newTask);
+  }
+  await board.save();
+  res.status(200).json({ message: "Task Updated Successfully" });
+});
+
+export const deleteTask = AsyncHandler(async (req, res, next) => {
   const { bid, cid, tid } = req.params;
   const board = await Boards.findById(bid);
   if (!board) {
@@ -26,22 +53,13 @@ export const subtaskUpdation = AsyncHandler(async (req, res, next) => {
   }
   const [column] = board.columns.filter((col) => col._id.toString() === cid);
   if (!column) {
-    return next(new ErrorHandler("Column not Found", 404));
+    return next(new ErrorHandler("Column not found", 404));
   }
-  let [task] = column.tasks.filter((task) => task._id.toString() === tid);
+  const [task] = column.tasks.filter((t) => t._id.toString() === tid);
   if (!task) {
-    return next(new ErrorHandler("Task Not Found", 404));
+    return next(new ErrorHandler("Task not found", 404));
   }
-  if (status === column.name) {
-    task = { ...task, status, subtasks: subtasks };
-    await board.save();
-    res.status(200).json({ message: "Task Updated Successfully" });
-  } else {
-    const [changeColumn] = board.columns.filter((col) => col.name === status);
-    const newTask = { ...task, status: status, subtasks: subtasks };
-    column = column.tasks.filter((t) => t._id.toString() !== tid);
-    changeColumn.tasks.push(newTask);
-    await board.save();
-    res.status(201).json({ message: "Task Updated Successfully" });
-  }
+  column.tasks = column.tasks.filter((t) => t._id.toString() !== tid);
+  await board.save();
+  res.status(200).json({ message: "Task Deleted Successfully" });
 });

@@ -2,6 +2,8 @@ import TASK_ACTION_TYPE from "./task.types";
 
 const INITIAL_STATE = {
   createTaskMessage: "",
+  updateTaskMessage: "",
+  deleteTaskMessage: "",
   error: null,
   taskLoading: false,
   task: {},
@@ -20,6 +22,16 @@ const taskReducer = (state = INITIAL_STATE, action) => {
       return { ...state, taskLoading: false, task: payload };
     case TASK_ACTION_TYPE.SELECT_TASK_FAILED:
       return { ...state, taskLoading: false, error: payload };
+    case TASK_ACTION_TYPE.UPDATE_TASK_LOADING:
+      return { ...state };
+    case TASK_ACTION_TYPE.UPDATE_TASK_SUCCESS:
+      return { ...state, updateTaskMessage: payload };
+    case TASK_ACTION_TYPE.UPDATE_TASK_FAILED:
+      return { ...state, error: payload };
+    case TASK_ACTION_TYPE.DELETE_TASK_SUCCESS:
+      return { ...state, deleteTaskMessage: payload, task: null };
+    case TASK_ACTION_TYPE.DELETE_TASK_FAILED:
+      return { ...state, error: payload };
     default:
       return state;
   }

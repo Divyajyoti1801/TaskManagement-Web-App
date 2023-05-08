@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import cross from "../../assets/icon-cross.svg";
+import { OneBoard } from "../../store/Boards/board.actions";
 import { selectBoard } from "../../store/Boards/board.selector";
 import { CreateTask } from "../../store/Task/task.actions";
 import { selectCreateTaskMessage } from "../../store/Task/task.selector";
@@ -44,6 +45,7 @@ const NewTaskForm = () => {
     dispatch(CreateTask(board._id, title, description, status, subtasksData));
     if (createTaskMessage) {
       toast.success("Task Created Successfully");
+      dispatch(OneBoard(board._id));
     }
   };
 
@@ -81,7 +83,11 @@ const NewTaskForm = () => {
         <div className="newTask__container">
           <label className="newTask__container--label">Subtasks</label>
           {subtasks.map((subtask, index) => (
-            <div type={index} className="newTask__container--subtask">
+            <div
+              type={index}
+              key={index}
+              className="newTask__container--subtask"
+            >
               <input
                 type="text"
                 value={subtask}

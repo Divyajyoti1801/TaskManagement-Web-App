@@ -16,3 +16,13 @@ export const selectTask = createSelector(
   [SelectTaskReducer],
   (data) => data.task
 );
+
+export const selectUpdateTaskMessage = createSelector(
+  [SelectTaskReducer],
+  (data) => data.updateTaskMessage
+);
+
+export const selectDeleteTaskMessage = createSelector(
+  [SelectTaskReducer],
+  (data) => data.deleteTaskMessage
+);
