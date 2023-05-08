@@ -8,7 +8,7 @@ import App from "./App.jsx";
 import { persister, store } from "./store/store";
 import "./styles/index.scss";
 
-axios.defaults.baseURL = "http://localhost:3001/api";
+axios.defaults.baseURL = "https://taskmanagement-server.onrender.com/api";
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
