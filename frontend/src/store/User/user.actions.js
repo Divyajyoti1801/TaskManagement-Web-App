@@ -7,7 +7,11 @@ import USER_ACTION_TYPES from "./user.types";
 export const LoginUser = (email, password) => async (dispatch) => {
   try {
     dispatch(createReducer(USER_ACTION_TYPES.USER_LOGIN_START));
-    const { data } = await axios.post("/user/login", { email, password });
+    const { data } = await axios.post(
+      "/user/login",
+      { email, password },
+      { withCredentials: true }
+    );
     dispatch(createReducer(USER_ACTION_TYPES.USER_LOGIN_SUCCESS, data.user));
   } catch (error) {
     dispatch(createReducer(USER_ACTION_TYPES.USER_LOGOUT_FAILED, error));

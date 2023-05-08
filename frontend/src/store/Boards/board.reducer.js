@@ -29,8 +29,8 @@ const boardReducer = (state = INITIAL_STATE, action) => {
       return { ...state, isBoardLoading: false, board: payload };
     case BOARD_ACTION_TYPES.ERROR_CURRENT_BOARD:
       return { ...state, error: payload };
-    case BOARD_ACTION_TYPES.CLEAR_CURRENT_BOARD:
-      return { ...state, board: payload };
+    case BOARD_ACTION_TYPES.CLEAR_CURRENT_BOARDS:
+      return { ...state, boards: null, board: null };
     case BOARD_ACTION_TYPES.DELETE_BOARD_START:
       return { ...state };
     case BOARD_ACTION_TYPES.DELETE_BOARD_SUCCESS:

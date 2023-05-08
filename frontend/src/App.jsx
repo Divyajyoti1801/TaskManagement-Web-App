@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Fragment } from "react";
 import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
@@ -7,6 +8,9 @@ import RegisterPage from "./router/Authentication/RegisterPage/RegisterPage";
 import DashBoard from "./router/DashBoard/DashBoard";
 import Welcome from "./router/Welcome/Welcome";
 import { selectIsAuthenticated } from "./store/User/user.selector";
+
+axios.defaults.baseURL = "https://taskmanagement-server.onrender.com/api";
+axios.defaults.withCredentials = true;
 
 const App = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);

@@ -5,7 +5,10 @@ import BOARD_ACTION_TYPES from "./board.types";
 export const AllBoards = async (dispatch) => {
   try {
     dispatch(createReducer(BOARD_ACTION_TYPES.FETCH_BOARDS_START));
-    const { data } = await axios.get("/board/all", { withCredentials: true });
+    const { data } = await axios.get("/board/all", {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
     dispatch(createReducer(BOARD_ACTION_TYPES.FETCH_BOARDS_SUCCESS, data));
   } catch (error) {
     dispatch(createReducer(BOARD_ACTION_TYPES.FETCH_BOARDS_FAILED, error));
@@ -69,5 +72,5 @@ export const CreateColumn = (bid, name) => async (dispatch) => {
 };
 
 export const ClearBoard = (dispatch) => {
-  dispatch(createReducer(BOARD_ACTION_TYPES.CLEAR_CURRENT_BOARD, null));
+  dispatch(createReducer(BOARD_ACTION_TYPES.CLEAR_CURRENT_BOARDS));
 };
