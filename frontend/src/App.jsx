@@ -9,7 +9,7 @@ import DashBoard from "./router/DashBoard/DashBoard";
 import Welcome from "./router/Welcome/Welcome";
 import { selectIsAuthenticated } from "./store/User/user.selector";
 
-axios.defaults.baseURL = "https://taskmanagement-server.onrender.com/api";
+axios.defaults.baseURL = "http://localhost:3001/api";
 axios.defaults.withCredentials = true;
 
 const App = () => {

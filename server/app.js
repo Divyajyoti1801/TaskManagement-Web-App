@@ -1,19 +1,23 @@
+import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import dotenv from "dotenv";
 import express from "express";
 import ErrorMiddleware from "./middlewares/ErrorMiddleware.js";
-
 const app = express();
+
+dotenv.config();
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://192.168.0.101:3000",
+    origin: [process.env.CLIENT],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Major Routes Imports
 import boardRouter from "./routes/BoardRoutes.js";

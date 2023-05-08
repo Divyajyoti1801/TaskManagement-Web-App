@@ -63,6 +63,8 @@ export const loginUser = AsyncHandler(async (req, res, next) => {
     .cookie("token", token, {
       httpOnly: true,
       maxAge: 15 * 60 * 1000,
+      sameSite: process.env.NODE_ENV === "Development" ? "lax" : "none",
+      secure: process.env.NODE_ENV === "Development" ? false : true,
     })
     .json({ message: `Welcome ${user.name}. Happy Productivity`, user });
 });
@@ -71,6 +73,11 @@ export const loginUser = AsyncHandler(async (req, res, next) => {
 export const logoutUser = AsyncHandler(async (req, res, next) => {
   return res
     .status(200)
-    .cookie("token", null, { expire: new Date(Date.now()), httpOnly: true })
+    .cookie("token", "", {
+      expire: new Date(Date.now()),
+      httpOnly: true,
+      sameSite: process.env.NODE_ENV === "Development" ? "lax" : "none",
+      secure: process.env.NODE_ENV === "Development" ? false : true,
+    })
     .json({ message: "User Logout Successfully" });
 });

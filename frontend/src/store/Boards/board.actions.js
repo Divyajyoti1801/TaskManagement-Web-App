@@ -6,7 +6,6 @@ export const AllBoards = async (dispatch) => {
   try {
     dispatch(createReducer(BOARD_ACTION_TYPES.FETCH_BOARDS_START));
     const { data } = await axios.get("/board/all", {
-      headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });
     dispatch(createReducer(BOARD_ACTION_TYPES.FETCH_BOARDS_SUCCESS, data));

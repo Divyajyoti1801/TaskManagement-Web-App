@@ -17,7 +17,9 @@ connectDB();
 
 //SERVER INSTANCE
 const server = app.listen(process.env.PORT, () => {
-  console.log(`SERVER connected on: ${process.env.PORT}`);
+  console.log(
+    `SERVER connected on: ${process.env.PORT}/ Mode: ${process.env.NODE_ENV}`
+  );
 });
 
 //UNHANDLED REJECTION

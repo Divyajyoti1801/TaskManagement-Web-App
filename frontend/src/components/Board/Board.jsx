@@ -27,12 +27,12 @@ const Board = ({ board }) => {
         <img src={Bin} alt="Bin SVG" />
       </button>
 
-      {columns.length !== 0 ? (
+      {columns?.length !== 0 ? (
         <div className="board__content">
-          {columns.map((column) => (
+          {columns?.map((column) => (
             <div className="column">
               <h3 className="column__header">
-                {column.name} ({column.tasks.length})
+                {column.name} ({column.tasks?.length})
               </h3>
               {column.tasks?.map((task) => (
                 <Task key={task._id} task={task} />
