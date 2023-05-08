@@ -122,3 +122,36 @@
 .hidden {
   display: none;
 }
+
+.darkNavigation {
+  background: $color-main-DARK-GREY;
+  &__header {
+    border-bottom-color: $color-lines-DARK;
+    border-right-color: $color-lines-DARK;
+
+    @include BREAK($bp-tablet) {
+      border-right: none;
+      &--mobile {
+        @include FLEX(row, center, center);
+        gap: 1rem;
+        h3 {
+          font-size: $font-size-heading-XL;
+          font-weight: $font-weight-L;
+          color: $color-main-WHITE;
+        }
+        img {
+          width: 2rem;
+          height: 100%;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  &__nav {
+    border-bottom-color: $color-lines-DARK;
+
+    &--title {
+      color: $color-main-WHITE;
+    }
+  }
+}

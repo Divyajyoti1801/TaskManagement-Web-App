@@ -5,12 +5,14 @@ import cross from "../../assets/icon-cross.svg";
 import { CreateBoard } from "../../store/Boards/board.actions";
 import { selectBoardCreateMessage } from "../../store/Boards/board.selector";
 import { BoardFormToggle } from "../../store/UI/ui.actions";
+import { selectChangeTheme } from "../../store/UI/ui.selector";
 import "./NewBoardForm.scss";
 
 const NewBoardForm = () => {
   const dispatch = useDispatch();
   const [boardName, setBoardName] = useState("");
   const [columns, setColumns] = useState([""]);
+  const changeTheme = useSelector(selectChangeTheme);
 
   const OnChangeBoardName = (event) => setBoardName(event.target.value);
 
@@ -44,7 +46,10 @@ const NewBoardForm = () => {
   };
   return (
     <div className="boardFormContainer">
-      <form className="boardForm" onSubmit={onSubmitHandler}>
+      <form
+        className={`boardForm ${changeTheme ? `` : `darkBackground`}`}
+        onSubmit={onSubmitHandler}
+      >
         <button
           className="boardForm__close"
           onClick={() => dispatch(BoardFormToggle(false))}

@@ -24,7 +24,11 @@ const Sidebar = ({ Boards }) => {
   };
 
   return (
-    <div className={`sidebar ${sidebarToggle ? `` : `sidebar__hidden`}`}>
+    <div
+      className={`sidebar ${sidebarToggle ? `` : `sidebar__hidden`} ${
+        changeTheme ? `` : `darkBackground darkLine`
+      }`}
+    >
       <div className="sidebar__nav">
         <h2 className="sidebar__nav--header">
           ALL BOARDS ({Boards ? `${Boards?.length}` : `0`})
@@ -45,7 +49,11 @@ const Sidebar = ({ Boards }) => {
           + Create New Board
         </button>
       </div>
-      <div className="sidebar__mode">
+      <div
+        className={`sidebar__mode ${
+          changeTheme ? `` : `darkComponentBackground`
+        }`}
+      >
         <img src={LightApp} alt="Light Mode Icon" />
         <label className="switch">
           <input type="checkbox" onChange={onChangeHandler} />

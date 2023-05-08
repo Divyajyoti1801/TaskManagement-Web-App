@@ -3,11 +3,13 @@ import Add from "../../assets/icon-add-task-mobile.svg";
 import DownArrow from "../../assets/icon-chevron-down.svg";
 import UpArrow from "../../assets/icon-chevron-up.svg";
 import Logo from "../../assets/logo-dark.svg";
+import darkLogo from "../../assets/logo-light.svg";
 import MobileLogo from "../../assets/logo-mobile.svg";
 import { selectBoard } from "../../store/Boards/board.selector";
 import { AddtaskFormToggle, toggleSidebar } from "../../store/UI/ui.actions";
 import {
   selectAddtaskFormToggle,
+  selectChangeTheme,
   selectSidebarToggle,
 } from "../../store/UI/ui.selector";
 import { LogoutUser } from "../../store/User/user.actions";
@@ -20,6 +22,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const sidebarToggle = useSelector(selectSidebarToggle);
   const addTaskFormToggle = useSelector(selectAddtaskFormToggle);
+  const changeTheme = useSelector(selectChangeTheme);
 
   //Logout Handler
   const logoutHandler = () => dispatch(LogoutUser);
@@ -28,9 +31,17 @@ const Navigation = () => {
   const sidebarToggleHandler = () => dispatch(toggleSidebar(!sidebarToggle));
 
   return (
-    <div className="navigation">
-      <div className="navigation__header">
-        <img src={Logo} alt="Logo" className="navigation__header--logo" />
+    <div className={`navigation ${changeTheme ? `` : `darkNavigation`}`}>
+      <div
+        className={`navigation__header ${
+          changeTheme ? `` : `darkNavigation__header`
+        }`}
+      >
+        <img
+          src={changeTheme ? Logo : darkLogo}
+          alt="Logo"
+          className="navigation__header--logo"
+        />
         <div className="navigation__header--mobile">
           <img src={MobileLogo} alt="Mobile Logo" />
           <h3>{board ? `${board.name}` : `Board`}</h3>
@@ -41,12 +52,26 @@ const Navigation = () => {
           />
         </div>
       </div>
-      <nav className="navigation__nav">
-        <h2 className="navigation__nav--title">
+      <nav
+        className={`navigation__nav ${
+          changeTheme ? `` : `darkNavigation__nav`
+        }`}
+      >
+        <h2
+          className={`navigation__nav--title ${
+            changeTheme ? `` : `darkNavigation__nav--title`
+          }`}
+        >
           {board ? `${board.name}` : `Board`}
         </h2>
         <div className="navigation__nav--menu">
-          <p className="navigation__nav--menu--user">{user.name}</p>
+          <p
+            className={`navigation__nav--menu--user ${
+              changeTheme ? `` : `darkText`
+            }`}
+          >
+            {user.name}
+          </p>
           <button
             className="navigation__nav--menu--cta-1"
             onClick={() => dispatch(AddtaskFormToggle(!addTaskFormToggle))}

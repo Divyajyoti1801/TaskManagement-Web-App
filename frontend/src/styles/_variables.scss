@@ -32,7 +32,7 @@ $color-main-MEDIUM-GREY: #828fa3;
 $color-lines-LIGHT: #e4ebfa;
 $color-back-GREY: #f4f7fd;
 $color-main-WHITE: #ffffff;
-$color-back-blur: #3e3f4ea9;
+$color-back-blur: #25252eb2;
 
 /* Default Variables */
 $transition: all 0.4s ease;
@@ -73,4 +73,20 @@ $box-shadow: 1px -1px 20px -3px rgba(62, 63, 78, 1);
 @mixin BTN-HOVER($bg, $color) {
   background: $bg;
   color: $color;
+}
+
+.darkText {
+  color: $color-main-WHITE;
+}
+
+.darkComponentBackground {
+  background: $color-back-dark-GREY;
+}
+
+.darkBackground {
+  background: $color-main-DARK-GREY;
+}
+
+.darkLine {
+  border-color: $color-lines-DARK;
 }

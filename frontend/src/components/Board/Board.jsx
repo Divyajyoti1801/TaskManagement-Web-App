@@ -6,6 +6,7 @@ import {
   DeleteBoardFormToggle,
 } from "../../store/UI/ui.actions";
 import {
+  selectChangeTheme,
   selectColumnFormToggle,
   selectDeleteBoardFormToggle,
 } from "../../store/UI/ui.selector";
@@ -15,13 +16,14 @@ import "./Board.scss";
 
 const Board = ({ board }) => {
   const dispatch = useDispatch();
+  const changeTheme = useSelector(selectChangeTheme);
   const columnFormToggle = useSelector(selectColumnFormToggle);
   const { columns } = board;
   const deleteBoardFormToggle = useSelector(selectDeleteBoardFormToggle);
   return (
-    <div className="board">
+    <div className={`board ${changeTheme ? `` : `darkComponentBackground`}`}>
       <button
-        className="board__delete"
+        className={`board__delete ${changeTheme ? `` : `darkBackground`}`}
         onClick={() => dispatch(DeleteBoardFormToggle(!deleteBoardFormToggle))}
       >
         <img src={Bin} alt="Bin SVG" />
@@ -40,7 +42,9 @@ const Board = ({ board }) => {
             </div>
           ))}
           <div
-            className="board__content--cta"
+            className={`board__content--cta ${
+              changeTheme ? `` : `darkBackground`
+            }`}
             onClick={() => dispatch(ColumnFormToggle(!columnFormToggle))}
           >
             <p className="board__content--cta--text">

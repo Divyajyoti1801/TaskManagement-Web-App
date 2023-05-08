@@ -19,6 +19,7 @@ import { BoardFormToggle } from "../../store/UI/ui.actions";
 import {
   selectAddtaskFormToggle,
   selectBoardFormToggle,
+  selectChangeTheme,
   selectColumnFormToggle,
   selectDeleteBoardFormToggle,
   selectSubtaskFormToggle,
@@ -40,9 +41,10 @@ const DashBoard = () => {
   const deleteBoardFormToggle = useSelector(selectDeleteBoardFormToggle);
   const columnFormToggle = useSelector(selectColumnFormToggle);
   const subtaskFormToggle = useSelector(selectSubtaskFormToggle);
+  const changeTheme = useSelector(selectChangeTheme);
 
   return (
-    <div className="dashboard">
+    <div className={`dashboard ${changeTheme ? `` : `darkDashboard`}`}>
       {addTaskFormToggle ? <NewTaskForm /> : <Fragment />}
       {boardFormToggle ? <NewBoardForm /> : <Fragment />}
       {deleteBoardFormToggle ? <DeleteBoardForm /> : <Fragment />}
@@ -57,7 +59,11 @@ const DashBoard = () => {
           ) : (
             <Fragment>
               {!board ? (
-                <div className="dashboardMain__canvas--empty">
+                <div
+                  className={`dashboardMain__canvas--empty ${
+                    changeTheme ? `darkBackground` : ``
+                  }`}
+                >
                   <h3 className="dashboardMain__canvas--empty--text">
                     No board is selected / Create new board
                   </h3>

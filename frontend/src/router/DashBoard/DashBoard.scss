@@ -62,3 +62,11 @@
     }
   }
 }
+
+.darkDashboard {
+  background: $color-back-dark-GREY;
+
+  &__canvas {
+    background: $color-back-dark-GREY;
+  }
+}

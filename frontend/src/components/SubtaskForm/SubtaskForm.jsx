@@ -12,6 +12,7 @@ import {
   selectUpdateTaskMessage,
 } from "../../store/Task/task.selector";
 import { SubtaskFormToggle } from "../../store/UI/ui.actions";
+import { selectChangeTheme } from "../../store/UI/ui.selector";
 import Loader from "../Loader/Loader";
 import "./SubtaskForm.scss";
 
@@ -25,6 +26,7 @@ const SubtaskForm = () => {
   const [column] = board.columns.filter((col) => col.name === task.status);
   const updateTaskMessage = useSelector(selectUpdateTaskMessage);
   const deleteTaskMessage = useSelector(selectDeleteTaskMessage);
+  const changeTheme = useSelector(selectChangeTheme);
 
   const handleSubtaskChange = (event, index) => {
     const newSubtasks = [...subtasks];
@@ -75,7 +77,10 @@ const SubtaskForm = () => {
       {taskLoading ? (
         <Loader />
       ) : (
-        <form className="subtaskForm" onSubmit={onSubmitHandler}>
+        <form
+          className={`subtaskForm ${changeTheme ? `` : `darkBackground`}`}
+          onSubmit={onSubmitHandler}
+        >
           <button
             className="subtaskForm__cross"
             onClick={() => dispatch(SubtaskFormToggle(false))}
