@@ -2,7 +2,7 @@
 import USER_ACTION_TYPES from "./user.types";
 
 const INITIAL_STATE = {
-  user: {},
+  user: null,
   isLoading: false,
   isAuthenticated: false,
   isRegistered: false,
@@ -44,7 +44,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case USER_ACTION_TYPES.USER_LOGOUT_START:
       return { ...state, isLoading: true };
     case USER_ACTION_TYPES.USER_LOGOUT_SUCCESS:
-      return { ...state, isLoading: false, isAuthenticated: false, user: {} };
+      return { ...state, isLoading: false, isAuthenticated: false, user: null };
     case USER_ACTION_TYPES.USER_LOGOUT_FAILED:
       return { ...state, isLoading: false, error: payload };
     default:
