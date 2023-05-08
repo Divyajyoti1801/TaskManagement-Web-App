@@ -44,7 +44,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case USER_ACTION_TYPES.USER_LOGOUT_START:
       return { ...state, isLoading: true };
     case USER_ACTION_TYPES.USER_LOGOUT_SUCCESS:
-      return { ...state, isLoading: false, isAuthenticated: false, user: null };
+      return { ...state, isLoading: false, isAuthenticated: false, user: {} };
     case USER_ACTION_TYPES.USER_LOGOUT_FAILED:
       return { ...state, isLoading: false, error: payload };
     default:
