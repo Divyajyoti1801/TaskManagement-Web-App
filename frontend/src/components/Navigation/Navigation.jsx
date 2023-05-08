@@ -44,7 +44,7 @@ const Navigation = () => {
         />
         <div className="navigation__header--mobile">
           <img src={MobileLogo} alt="Mobile Logo" />
-          <h3>{board ? `${board.name}` : `Board`}</h3>
+          <h3>{board ? `${board?.name}` : `Board`}</h3>
           <img
             src={sidebarToggle ? UpArrow : DownArrow}
             alt="Down Arrow"
@@ -62,7 +62,7 @@ const Navigation = () => {
             changeTheme ? `` : `darkNavigation__nav--title`
           }`}
         >
-          {board ? `${board.name}` : `Board`}
+          {board ? `${board?.name}` : `Board`}
         </h2>
         <div className="navigation__nav--menu">
           <p
@@ -70,7 +70,7 @@ const Navigation = () => {
               changeTheme ? `` : `darkText`
             }`}
           >
-            {user.name}
+            {user?.name}
           </p>
           <button
             className="navigation__nav--menu--cta-1"
