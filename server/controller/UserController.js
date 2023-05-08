@@ -57,12 +57,12 @@ export const loginUser = AsyncHandler(async (req, res, next) => {
   if (!isPassword) {
     return res.json({ error: "Invalid Credentials" });
   }
-  const token = await jwt.sign({ id: user._id }, process.env.SECRET_KEY);
+  const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY);
   res
     .status(200)
     .cookie("token", token, {
-      expire: new Date(Date.now()) + process.env.TOKEN_EXPIRY * 24 * 60 * 1000,
       httpOnly: true,
+      maxAge: 15 * 60 * 1000,
     })
     .json({ message: `Welcome ${user.name}. Happy Productivity`, user });
 });
