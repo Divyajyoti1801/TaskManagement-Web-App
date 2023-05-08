@@ -3,8 +3,8 @@ import BOARD_ACTION_TYPES from "./board.types";
 const INITIAL_STATE = {
   isBoardsLoading: false,
   isBoardLoading: false,
-  Boards: [],
-  board: {},
+  Boards: null,
+  board: null,
   boardCreationMessage: "",
   boardDeletionMessage: "",
   error: null,
@@ -30,7 +30,7 @@ const boardReducer = (state = INITIAL_STATE, action) => {
     case BOARD_ACTION_TYPES.ERROR_CURRENT_BOARD:
       return { ...state, error: payload };
     case BOARD_ACTION_TYPES.CLEAR_CURRENT_BOARDS:
-    return { ...state, boards: [], board: {} };
+      return { ...state, Boards: null, board: null };
     case BOARD_ACTION_TYPES.DELETE_BOARD_START:
       return { ...state };
     case BOARD_ACTION_TYPES.DELETE_BOARD_SUCCESS:

@@ -58,7 +58,7 @@ const DashBoard = () => {
             <Loader />
           ) : (
             <Fragment>
-              {!board ? (
+              {!Boards || !board ? (
                 <div
                   className={`dashboardMain__canvas--empty ${
                     changeTheme ? `darkBackground` : ``
