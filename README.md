@@ -67,13 +67,6 @@ I believe that there is always room for improvement, and I'm excited to keep wor
 
 
 ## Author
-- Divyajyoti - [@Divyajyoti1801](https://github.com/Divyajyoti1801)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-
-
-
-
-## Acknowledgments
-
+- [Divyajyoti](https://www.linkedin.com/in/divyajyoti)
 
 
